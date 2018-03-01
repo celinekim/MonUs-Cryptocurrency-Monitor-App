@@ -7,7 +7,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   letter-spacing: 0.5px;
-  background-color: #fafafa;
+  background-color: #fff;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   display: flex;
@@ -52,6 +52,39 @@ p {
 strong {
   font-weight: 700; }
 
+.content-wrapper {
+  margin-top: 64px; }
+
+.container-wrapper {
+  padding-top: 1em;
+  padding-bottom: 1em; }
+
+.container-wrapper.green-container-wrapper {
+  background-color: #009246;
+  color: #fff; }
+
+/* Title Typography */
+.text-title,
+.text-subtitle {
+  text-align: left; }
+  @media only screen and (max-width: 992px) {
+    .text-title,
+    .text-subtitle {
+      text-align: center; } }
+
+.text-center {
+  text-align: center !important; }
+
+.text-right {
+  text-align: right !important; }
+
+.image-container {
+  text-align: center; }
+
+/* Button */
+.btn-primary {
+  background-color: #009246; }
+
 .modal {
   max-height: 80%;
   max-width: 600px; }
@@ -75,7 +108,10 @@ strong {
         padding: 2em 1.5em; } }
 
 nav {
-  background-color: #2196F3; }
+  background-color: #009246;
+  z-index: 1004;
+  position: fixed;
+  top: 0; }
   nav .nav-wrapper {
     width: 80%;
     max-width: 760px;
@@ -108,22 +144,31 @@ nav {
   margin: 0.5em 0 1em;
   border: none; }
   .card .card-content {
-    padding: 24px 24px 16px; }
-    .card .card-content .card-title-small {
-      font-weight: 300;
-      margin-bottom: 10px; }
-    .card .card-content .card-title {
+    padding: 24px 24px 16px;
+    color: #000; }
+    .card .card-content .card-title-container {
       display: flex;
-      font-size: 1.5em;
       padding: 0 0 12px;
-      line-height: inherit; }
-      @media only screen and (max-width: 600px) {
-        .card .card-content .card-title {
-          display: block; } }
-      .card .card-content .card-title .card-subtitle {
-        line-height: normal;
-        font-size: 0.6em;
-        color: grey;
+      text-align: center;
+      flex-flow: column; }
+      .card .card-content .card-title-container .card-title-small {
+        font-weight: 300;
+        margin-bottom: 10px; }
+      .card .card-content .card-title-container .card-title {
+        font-size: 2em;
+        line-height: 2.2em;
+        margin: 0;
+        font-weight: 500;
+        color: #009246; }
+        @media only screen and (max-width: 600px) {
+          .card .card-content .card-title-container .card-title {
+            display: block; } }
+      .card .card-content .card-title-container .card-subtitle {
+        font-weight: 400;
+        margin: 0;
+        line-height: 1.5em;
+        font-size: 1.5em;
+        color: #4cb27d;
         font-weight: 400; }
   .card .card-action {
     padding: 8px 24px 8px; }
