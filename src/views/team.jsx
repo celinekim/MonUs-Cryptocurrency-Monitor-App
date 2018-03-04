@@ -6,7 +6,7 @@ export const Team = () =>
 			<div class="content-container col s12">
 				<h2 class="text-title text-center">The Team</h2>
 			</div>
-			<div class="col s12 m6 xl3">
+			<div class="col s12 m6 l3">
 				<div class="card">
 					<div class="card-image">
 						<img src="img/bryan.jpeg" alt="Bryan M. Li" />
@@ -21,7 +21,7 @@ export const Team = () =>
 					</div>
 				</div>
 			</div>
-			<div class="col s12 m6 xl3">
+			<div class="col s12 m6 l3">
 				<div class="card">
 					<div class="card-image">
 						<img src="img/celine.jpeg" alt="Celine Kim" />
@@ -36,7 +36,7 @@ export const Team = () =>
 					</div>
 				</div>
 			</div>
-			<div class="col s12 m6 xl3">
+			<div class="col s12 m6 l3">
 				<div class="card">
 					<div class="card-image">
 						<img src="img/dominick.jpeg" alt="Dominick Han" />
@@ -51,7 +51,7 @@ export const Team = () =>
 					</div>
 				</div>
 			</div>
-			<div class="col s12 m6 xl3">
+			<div class="col s12 m6 l3">
 				<div class="card">
 					<div class="card-image">
 						<img src="img/monica.jpeg" alt="Monica Iqbal" />

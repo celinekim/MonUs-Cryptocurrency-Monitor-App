@@ -31,7 +31,7 @@ class App extends React.Component {
 						<div class="nav-wrapper">
 							<div class="nav-left">
 								<a href="#" data-activates="side-nav" id="sideNavButton"><i class="fas fa-bars"></i></a>
-								<div class='brand-logo'><Link to="/"><img class="spin" src="favicon.png"/></Link></div>
+								<div class='brand-logo'><Link to="/"><img class="spin" src="img/bitcoin.png"/></Link></div>
 							</div>
 							<ul id="nav-mobile" class="right">
 								<li><a id='loginModalTrigger' class='modal-trigger' onClick={() => $('#loginModal').modal('open')}>Login</a></li>
