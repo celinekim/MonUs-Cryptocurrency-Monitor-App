@@ -65,29 +65,27 @@ export class Home extends React.Component {
 			}, 5000)
 		})
 		return (
-			<div id="home">
-				<div class="container-wrapper">
-					<div class='chart-container'>
-						<canvas id="sampleGraph"></canvas>
-					</div>
-					<div class="row">
-						<h3>Monitor Your Cryptocurrency!</h3>
-						<p class="text-content">MonUs is your one-stop shop to get the latest on your favourite cryptocurrencies. We monitor the prices of the top ten currencies:
-						<ul>
-						<li>Bitcoin (BTC)</li>
-						<li>Ethereum (ETH)</li>
-						<li>Ripple (XRP)</li>
-						<li>Bitcoin Cash (BCH)</li>
-						<li>Cardano (ADA)</li>
-						<li>Stellar (XLM)</li>
-						<li>NEO (NEO)</li>
-						<li>Litecoin (LTC)</li>
-						<li>EOS (EOS)</li>
-						<li>NEM (XEM)</li>
-						</ul>
-						We incorporate real-time graphs that display current and historical data for cryptocurrencies. You can create an account to follow your favourite cryptocurrencies and perform mock trading, in which you will receive $5000 USD once you create an account. Each graph updates every few seconds.
-						</p>
-					</div>
+			<div id="home" class="container-wrapper color-container-wrapper">
+				<div class='chart-container row'>
+					<canvas id="sampleGraph"></canvas>
+				</div>
+				<div class="row">
+					<h3>Monitor Your Cryptocurrency!</h3>
+					<p class="text-content">MonUs is your one-stop shop to get the latest on your favourite cryptocurrencies. We monitor the prices of the top ten currencies:
+					<ul>
+					<li>Bitcoin (BTC)</li>
+					<li>Ethereum (ETH)</li>
+					<li>Ripple (XRP)</li>
+					<li>Bitcoin Cash (BCH)</li>
+					<li>Cardano (ADA)</li>
+					<li>Stellar (XLM)</li>
+					<li>NEO (NEO)</li>
+					<li>Litecoin (LTC)</li>
+					<li>EOS (EOS)</li>
+					<li>NEM (XEM)</li>
+					</ul>
+					We incorporate real-time graphs that display current and historical data for cryptocurrencies. You can create an account to follow your favourite cryptocurrencies and perform mock trading, in which you will receive $5000 USD once you create an account. Each graph updates every few seconds.
+					</p>
 				</div>
 			</div>
 		)

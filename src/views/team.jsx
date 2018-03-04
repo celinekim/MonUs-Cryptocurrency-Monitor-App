@@ -1,10 +1,10 @@
 import React from 'react';
 
 export const Team = () =>
-	<div id="team" class="container-wrapper">
+	<div id="team" class="container-wrapper color-container-wrapper">
 		<div class="row">
 			<div class="content-container col s12">
-				<h2 class="text-title text-center">The Team</h2>
+				<h1 class="text-title text-center">The Team</h1>
 			</div>
 			<div class="col s12 m6 l3">
 				<div class="card">

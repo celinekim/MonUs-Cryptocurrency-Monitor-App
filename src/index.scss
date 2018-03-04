@@ -1,5 +1,5 @@
-$primary-green: #009688;
-$secondary-green: #00695C;
+$primary-color: #222;
+$secondary-color: #444;
 
 html {
 	overflow: auto;
@@ -31,6 +31,9 @@ body {
 
 .container-wrapper {
 	padding: 0;
+}
+
+.row {
 	margin: 0 auto;
 	width: 85%;
 	max-width: 1000px;
@@ -87,8 +90,8 @@ strong {
 	padding-bottom: 1em;
 }
 
-.container-wrapper.green-container-wrapper {
-	background-color: $primary-green;
+.container-wrapper.color-container-wrapper {
+	background-color: $primary-color;
 	color: #fff;
 }
 
@@ -116,7 +119,7 @@ strong {
 
 /* Button */
 .btn-primary {
-	background-color: $primary-green;
+	background-color: $primary-color;
 }
 
 
@@ -149,7 +152,7 @@ strong {
 }
 
 nav {
-	background-color: $primary-green;
+	background-color: $primary-color;
 	position: fixed;
 	top: 0;
 	z-index:10;
@@ -230,7 +233,7 @@ nav {
 				line-height: 2.2em;
 				margin: 0;
 				font-weight: 500;
-				color: $primary-green;
+				color: $primary-color;
 				@media only screen and (max-width:600px) {
 					display:block;
 				}
@@ -240,7 +243,7 @@ nav {
 				margin: 0;
 				line-height: 1.5em;
 				font-size: 1.5em;
-				color: $secondary-green;
+				color: $secondary-color;
 				font-weight: 400;
 			}
 		}
@@ -327,8 +330,8 @@ nav {
 	input, textarea {
 		font-size: 1em !important;
 		&:focus, &.valid {
-			border-bottom: 1px solid $primary-green !important;
-			box-shadow: 0 1px 0 0 $primary-green !important;
+			border-bottom: 1px solid $primary-color !important;
+			box-shadow: 0 1px 0 0 $primary-color !important;
 			outline:none !important;
 		}
 		&.invalid {
@@ -354,7 +357,7 @@ nav {
 		}
 		&.active {
 			font-size: 0.8em;
-			color: $primary-green !important;
+			color: $primary-color !important;
 			-webkit-transform: translateY(-110%);
 			transform: translateY(-110%);
 			&:after {
