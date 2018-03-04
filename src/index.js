@@ -6,8 +6,8 @@ import {sideNav} from 'materialize-css';
 
 import { Home } from './views/home.jsx';
 import { About } from './views/about.jsx';
-import { Login } from './views/login.jsx';
-import { SignUp } from './views/sign-up.jsx';
+import { Login } from './components/login.jsx';
+import { SignUp } from './components/sign-up.jsx';
 import { MainGraph } from './views/main-graph.jsx';
 
 import './index.css';
@@ -44,60 +44,8 @@ class App extends React.Component {
 							</ul>
 						</div>
 					</nav>
-					<div id='loginModal' class='modal'>
-						<form class='login-form'>
-							<div class='modal-content'>
-								<h3>Login</h3>
-								<div class="input-field col s12">
-									<input id="loginEmail" type="email" class="validate" />
-									<label for="loginEmail">Email</label>
-								</div>
-								<div class="input-field col s12">
-									<input id="loginPassword" type="password" class="validate" />
-									<label for="loginPassword">Password</label>
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button class="waves-effect waves-teal modal-action btn-flat" type="button" onClick={this.loginModalClose}>Cancel</button>
-								<button class="waves-effect waves-teal modal-action btn-flat" type="submit">Login</button>
-							</div>
-						</form>
-					</div>
-					<div id='signUpModal' class='modal'>
-						<form class='sign-up-form'>
-							<div class='modal-content'>
-								<h3>Sign Up</h3>
-								<div class="input-field col s12">
-									<input id="signUpFirstname" type="text" class="validate" />
-									<label for="signUpFirstname">First Name</label>
-								</div>
-								<div class="input-field col s12">
-									<input id="signUpLastname" type="text" class="validate" />
-									<label for="signUpLastname">Last Name</label>
-								</div>
-								<div class="input-field col s12">
-									<input id="signUpEmail" type="email" class="validate" />
-									<label for="signUpEmail">Email</label>
-								</div>
-								<div class="input-field col s12">
-									<input id="signUpUsername" type="text" class="validate" />
-									<label for="signUpUsername">Username</label>
-								</div>
-								<div class="input-field col s12">
-									<input id="signUpPassword" type="password" class="validate" />
-									<label for="signUpPassword">Password</label>
-								</div>
-								<div class="input-field col s12">
-									<input id="signUpConfirmpassword" type="password" class="validate" />
-									<label for="signUpConfirmpassword">Confirm Password</label>
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button class="waves-effect waves-teal modal-action btn-flat" type="button" onClick={this.signUpModalClose}>Cancel</button>
-								<button class="waves-effect waves-teal modal-action btn-flat" type="submit">Login</button>
-							</div>
-						</form>
-					</div>
+					<Login />
+					<SignUp />
 					<ul id="slide-out" class="side-nav">
 						<li>
 							<div class="user-view">
