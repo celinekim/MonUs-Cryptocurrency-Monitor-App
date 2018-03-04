@@ -4,7 +4,7 @@ export const Team = () =>
 	<div id="team" class="container-wrapper color-container-wrapper">
 		<div class="row wide">
 			<div class="content-container col s12">
-				<h1 class="text-title text-center">The Team</h1>
+				<h2 class="text-title text-center">The Team</h2>
 			</div>
 			<div class="col s12 m6 l3">
 				<div class="card">
@@ -13,7 +13,6 @@ export const Team = () =>
 					</div>
 					<div class="card-content">
 						<h4>Bryan M. Li</h4>
-						<p>Computer science student at the University of Toronto and member of <a href="http://for.ai">FOR.ai</a></p>
 					</div>
 					<div class="card-action">
 						<a href="https://github.com/bryanlimy"><i class="fab fa-github"></i></a>
@@ -28,7 +27,6 @@ export const Team = () =>
 					</div>
 					<div class="card-content">
 						<h4>Celine Kim</h4>
-						<p>3rd year undergraduate student at University of Toronto. I'm majoring in Computer Science and double minoring in Math and Statistics.</p>
 					</div>
 					<div class="card-action">
 						<a href="https://github.com/celinekim"><i class="fab fa-github"></i></a>
@@ -43,7 +41,6 @@ export const Team = () =>
 					</div>
 					<div class="card-content">
 						<h4>Dominick Han</h4>
-						<p>University of Toronto, 4th Year Undergraduate; Computer Science Specialist & Bioinformatics Specialist</p>
 					</div>
 					<div class="card-action">
 						<a href="https://github.com/dominick-han"><i class="fab fa-github"></i></a>
@@ -58,7 +55,6 @@ export const Team = () =>
 					</div>
 					<div class="card-content">
 						<h4>Monica Iqbal</h4>
-						<p>21-year-old comp sci major at the University of Toronto, with a double minor in environmental geography and environmental studies. I'm looking to use computer science to save the environment.</p>
 					</div>
 					<div class="card-action">
 						<a href="https://github.com/enviroprogrammer"><i class="fab fa-github"></i></a>

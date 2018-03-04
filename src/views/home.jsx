@@ -15,7 +15,6 @@ function addData(chart, label) {
 }
 
 export class Home extends React.Component {
-
 	render() {
 		var start = 0
 		$(document).ready(function() {
@@ -66,8 +65,8 @@ export class Home extends React.Component {
 		})
 		return (
 			<div id="home" class="container-wrapper color-container-wrapper">
-				<h1>MonUs</h1>
-				<h2>Cryptocurrency Monitor Page</h2>
+				<h1 class="drop-shadow">MonUs</h1>
+				<h2 class="drop-shadow no-margin">Your cryptocurrency monitor</h2>
 				<div class='chart-container row'>
 					<canvas id="sampleGraph"></canvas>
 				</div>

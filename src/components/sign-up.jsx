@@ -32,8 +32,8 @@ export const SignUp = () =>
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button class="waves-effect waves-teal modal-action btn-flat" type="button" onClick={() => $('#signUpModal').modal('close')}>Cancel</button>
-				<button class="waves-effect waves-teal modal-action btn-flat" type="submit">Login</button>
+				<button class="waves-effect modal-action btn-flat" type="button" onClick={() => $('#signUpModal').modal('close')}>Cancel</button>
+				<button class="waves-effect modal-action btn-flat" type="submit">Login</button>
 			</div>
 		</form>
 	</div>;
