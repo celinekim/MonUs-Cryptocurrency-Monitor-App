@@ -22,7 +22,10 @@ body {
 }
 
 .main {
-	margin: 40px 0 100px;
+	padding-top: 60px;
+	>div{
+		min-height: calc(100vh - 60px);
+	}
 }
 
 .innerMain {

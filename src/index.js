@@ -5,13 +5,12 @@ import $ from 'jquery';
 import {sideNav} from 'materialize-css';
 
 import { Home } from './views/home.jsx';
-import { About } from './views/about.jsx';
+import { Team } from './views/team.jsx';
 import { Login } from './components/login.jsx';
 import { SignUp } from './components/sign-up.jsx';
 import { MainGraph } from './views/main-graph.jsx';
 
 import './index.css';
-
 
 class App extends React.Component {
 	componentDidMount() {
@@ -50,26 +49,26 @@ class App extends React.Component {
 							</div>
 						</li>
 						<li><Link to="/" onClick={() => $('#sideNavButton').sideNav('hide')}> Home</Link></li>
-						<li><Link to="/about" onClick={() => $('#sideNavButton').sideNav('hide')}>About</Link></li>
+						<li><Link to="/team" onClick={() => $('#sideNavButton').sideNav('hide')}>Team</Link></li>
 						<li><Link to="/main-graph" onClick={() => $('#sideNavButton').sideNav('hide')}>Graphs</Link></li>
 					</ul>
-					<div class="content-wrapper main">
+					<div class="main">
 						<Switch>
 							<Route path="/" exact component={Home} />
-							<Route path="/about" exact component={About} />
-							<Route path="/login" exact component={Login} />
-							<Route path="/sign-up" exact component={SignUp} />
+							<Route path="/team" exact component={Team} />
 							<Route path="/main-graph" exact component={MainGraph} />
-							<Route render={() => <h1>Page not found</h1>} />
+							<Route render={() => <div id="team" class="row">
+													<div class="content-container col s12">
+														<h2 class="text-title text-center">404 - Page not found</h2>
+													</div>
+												</div>} />
 						</Switch>
 					</div>
 				</div>
-			</Router>	
+			</Router>
 		)
 	}
 }
-
-
 
 ReactDOM.render(
 	<App />,

@@ -1,0 +1,70 @@
+import React from 'react';
+
+export const Team = () =>
+	<div id="team" class="container-wrapper green-container-wrapper">
+		<div class="row">
+			<div class="content-container col s12">
+				<h2 class="text-title text-center">Meet the Team</h2>
+			</div>
+			<div class="col s12 m6 xl3">
+				<div class="card">
+					<div class="card-image">
+						<img src="http://via.placeholder.com/640x480" alt="" />
+					</div>
+					<div class="card-content">
+						<h4>Bryan M. Li</h4>
+						<p>[Text]</p>
+					</div>
+					<div class="card-action">
+						<a href="https://github.com/bryanlimy">Github</a>
+						<a href="https://www.linkedin.com/in/bryanlimy/">Linkedin</a>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m6 xl3">
+				<div class="card">
+					<div class="card-image">
+						<img src="images/celine.jpg" alt="" />
+					</div>
+					<div class="card-content">
+						<h4>Celine Kim</h4>
+						<p>[Text]</p>
+					</div>
+					<div class="card-action">
+						<a href="https://github.com/celinekim">Github</a>
+						<a href="https://www.linkedin.com/in/celine-kim/">Linkedin</a>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m6 xl3">
+				<div class="card">
+					<div class="card-image">
+						<img src="http://via.placeholder.com/640x480" alt="" />
+					</div>
+					<div class="card-content">
+						<h4>Dominick Han</h4>
+						<p>[Text]</p>
+					</div>
+					<div class="card-action">
+						<a href="https://github.com/dominick-han">Github</a>
+						<a href="https://linkedin.com/in/dominickhan/">Linkedin</a>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m6 xl3">
+				<div class="card">
+					<div class="card-image">
+						<img src="http://via.placeholder.com/640x480" alt="" />
+					</div>
+					<div class="card-content">
+						<h4>Monica Iqbal</h4>
+						<p>[Text]</p>
+					</div>
+					<div class="card-action">
+						<a href="https://github.com/enviroprogrammer">Github</a>
+						<a href="https://www.linkedin.com/in/iqbalmonica/">Linkedin</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>;
