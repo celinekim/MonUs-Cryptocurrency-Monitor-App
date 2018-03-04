@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Team = () =>
 	<div id="team" class="container-wrapper color-container-wrapper">
-		<div class="row">
+		<div class="row wide">
 			<div class="content-container col s12">
 				<h1 class="text-title text-center">The Team</h1>
 			</div>
