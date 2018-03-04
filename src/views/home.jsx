@@ -66,6 +66,8 @@ export class Home extends React.Component {
 		})
 		return (
 			<div id="home" class="container-wrapper color-container-wrapper">
+				<h1>MonUs</h1>
+				<h2>Cryptocurrency Monitor Page</h2>
 				<div class='chart-container row'>
 					<canvas id="sampleGraph"></canvas>
 				</div>
