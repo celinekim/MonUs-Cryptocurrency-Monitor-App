@@ -7,7 +7,7 @@ export const SideNav = () =>
 		<li>
 			<div class="user-view">
 				<div class="background">
-					<img src="img/financial-district.jpg" width="100%"/>
+					<img src="img/financial-district.jpg" height="100%"/>
 				</div>
 				<img class="brand-logo" src="img/bitcoin.png" height="64px"/>
 				<span class="white-text name">Test User</span>
