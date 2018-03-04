@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 import { Home } from './views/home.jsx';
+import { About } from './views/about.jsx';
 
 import './index.css';
 
