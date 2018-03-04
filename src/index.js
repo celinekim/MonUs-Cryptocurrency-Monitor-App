@@ -14,18 +14,6 @@ import './index.css';
 
 
 class App extends React.Component {
-	loginModalOpen() {
-		$('#loginModal').modal('open')
-	}
-	loginModalClose() {
-		$('#loginModal').modal('close')
-	}
-	signUpModalOpen() {
-		$('#signUpModal').modal('open')
-	}
-	signUpModalClose() {
-		$('#signUpModal').modal('close')
-	}
 	render() {
 		$(document).ready(function() {
 			$('#sideNavButton').sideNav()
@@ -35,17 +23,17 @@ class App extends React.Component {
 		return (
 			<Router>
 				<div>
+					<Login />
+					<SignUp />
 					<nav>
 						<div class="nav-wrapper">
 							<a href="#" data-activates="slide-out" id="sideNavButton" class="brand-logo"><img class="spin" src="favicon.png"/></a>
 							<ul id="nav-mobile" class="right">
-								<li><a id='loginModalTrigger' class='modal-trigger' onClick={this.loginModalOpen}>Login</a></li>
-								<li><a id='signUpModalTrigger' class='modal-trigger' onClick={this.signUpModalOpen}>Sign Up</a></li>
+								<li><a id='loginModalTrigger' class='modal-trigger' onClick={() => $('#loginModal').modal('open')}>Login</a></li>
+								<li><a id='signUpModalTrigger' class='modal-trigger' onClick={() => $('#signUpModal').modal('open')}>Sign Up</a></li>
 							</ul>
 						</div>
 					</nav>
-					<Login />
-					<SignUp />
 					<ul id="slide-out" class="side-nav">
 						<li>
 							<div class="user-view">

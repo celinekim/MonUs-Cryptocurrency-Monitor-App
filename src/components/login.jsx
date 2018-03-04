@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from "jquery";
 
 export const Login = () =>
 	<div id='loginModal' class='modal'>
@@ -15,7 +16,7 @@ export const Login = () =>
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button class="waves-effect waves-teal modal-action btn-flat" type="button" onClick={this.loginModalClose}>Cancel</button>
+				<button class="waves-effect waves-teal modal-action btn-flat" type="button" onClick={() => $('#loginModal').modal('close')}>Cancel</button>
 				<button class="waves-effect waves-teal modal-action btn-flat" type="submit">Login</button>
 			</div>
 		</form>
