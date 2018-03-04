@@ -9,7 +9,7 @@ export const SideNav = () =>
 				<div class="background">
 					<img src="img/financial-district.jpg" width="100%"/>
 				</div>
-				<img class="brand-logo" src="favicon.png"/>
+				<img class="brand-logo" src="img/bitcoin.png" height="64px"/>
 				<span class="white-text name">Test User</span>
 				<span class="white-text email">test.user@email.com</span>
 			</div>
