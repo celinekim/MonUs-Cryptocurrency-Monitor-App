@@ -1,3 +1,7 @@
-#### How-to run
-- scss
-```sass --watch style/main.scss:style/main.css```
+# How-to run
+### First time
+```npm install```
+### To display the page
+```npm start```
+### To build static HTML/JS/CSS
+```npm run build```
