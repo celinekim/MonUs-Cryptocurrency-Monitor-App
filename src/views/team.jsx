@@ -28,7 +28,7 @@ export const Team = () =>
 					</div>
 					<div class="card-content">
 						<h4>Celine Kim</h4>
-						<p>Celine Kim</p>
+						<p>3rd year undergraduate student at University of Toronto. I'm majoring in Computer Science and double minoring in Math and Statistics.</p>
 					</div>
 					<div class="card-action">
 						<a href="https://github.com/celinekim"><i class="fab fa-github"></i></a>
