@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const SignUp = () =>
 	<div id="signup">
 		<div class="container-wrapper">

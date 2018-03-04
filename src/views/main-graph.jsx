@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const MainGraph = () =>
 	<div id="main-graph">
 		<div class="container-wrapper">

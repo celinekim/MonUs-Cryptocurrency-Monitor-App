@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const Home = () =>
 	<div id="home">
 		<div class="container-wrapper">

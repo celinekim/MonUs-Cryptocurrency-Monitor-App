@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const About = () =>
 	<div id="about">
 		<div class="container-wrapper green-container-wrapper">

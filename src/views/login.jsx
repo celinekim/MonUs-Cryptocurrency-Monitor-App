@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const Login = () =>
 	<div id="login">
 		<div class="container-wrapper">
