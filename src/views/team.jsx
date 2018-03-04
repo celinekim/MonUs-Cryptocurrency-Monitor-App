@@ -1,10 +1,10 @@
 import React from 'react';
 
 export const Team = () =>
-	<div id="team" class="container-wrapper green-container-wrapper">
+	<div id="team" class="container-wrapper">
 		<div class="row">
 			<div class="content-container col s12">
-				<h2 class="text-title text-center">Meet the Team</h2>
+				<h2 class="text-title text-center">The Team</h2>
 			</div>
 			<div class="col s12 m6 xl3">
 				<div class="card">
@@ -13,7 +13,7 @@ export const Team = () =>
 					</div>
 					<div class="card-content">
 						<h4>Bryan M. Li</h4>
-						<p>Computer science student at the University of Toronto and member of FOR.ai</p>
+						<p>Computer science student at the University of Toronto and member of <a href="http://for.ai">FOR.ai</a></p>
 					</div>
 					<div class="card-action">
 						<a href="https://github.com/bryanlimy"><i class="fab fa-github"></i></a>
