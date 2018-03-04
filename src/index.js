@@ -27,7 +27,7 @@ class App extends React.Component {
 		$('#signUpModal').modal('close')
 	}
 	render() {
-		$( document ).ready(function() {
+		$(document).ready(function() {
 			$('#sideNavButton').sideNav()
 			$('#loginModal').modal()
 			$('#signUpModal').modal()

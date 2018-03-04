@@ -60,7 +60,7 @@ strong {
   padding-bottom: 1em; }
 
 .container-wrapper.green-container-wrapper {
-  background-color: #009246;
+  background-color: #009688;
   color: #fff; }
 
 /* Title Typography */
@@ -83,7 +83,7 @@ strong {
 
 /* Button */
 .btn-primary {
-  background-color: #009246; }
+  background-color: #009688; }
 
 .modal {
   max-height: 80%;
@@ -108,7 +108,7 @@ strong {
         padding: 2em 1.5em; } }
 
 nav {
-  background-color: #009246;
+  background-color: #009688;
   position: fixed;
   top: 0; }
   nav .nav-wrapper {
@@ -162,7 +162,7 @@ nav {
         line-height: 2.2em;
         margin: 0;
         font-weight: 500;
-        color: #009246; }
+        color: #009688; }
         @media only screen and (max-width: 600px) {
           .card .card-content .card-title-container .card-title {
             display: block; } }
@@ -171,7 +171,7 @@ nav {
         margin: 0;
         line-height: 1.5em;
         font-size: 1.5em;
-        color: #4cb27d;
+        color: #00695C;
         font-weight: 400; }
   .card .card-action {
     padding: 8px 24px 8px; }
@@ -234,8 +234,8 @@ nav {
   .input-field input, .input-field textarea {
     font-size: 1em !important; }
     .input-field input:focus, .input-field input.valid, .input-field textarea:focus, .input-field textarea.valid {
-      border-bottom: 1px solid #009246 !important;
-      box-shadow: 0 1px 0 0 #009246 !important;
+      border-bottom: 1px solid #009688 !important;
+      box-shadow: 0 1px 0 0 #009688 !important;
       outline: none !important; }
     .input-field input.invalid, .input-field textarea.invalid {
       border-bottom: 1px solid #F44336 !important;
@@ -255,7 +255,7 @@ nav {
       font-size: 0.8em; }
     .input-field label.active {
       font-size: 0.8em;
-      color: #009246 !important;
+      color: #009688 !important;
       -webkit-transform: translateY(-110%);
       transform: translateY(-110%); }
       .input-field label.active:after {
