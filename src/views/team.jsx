@@ -9,11 +9,11 @@ export const Team = () =>
 			<div class="col s12 m6 xl3">
 				<div class="card">
 					<div class="card-image">
-						<img src="http://via.placeholder.com/640x480" alt="" />
+						<img src="img/bryan.jpeg" alt="Bryan M. Li" />
 					</div>
 					<div class="card-content">
 						<h4>Bryan M. Li</h4>
-						<p>[Text]</p>
+						<p>Computer science student at the University of Toronto and member of FOR.ai</p>
 					</div>
 					<div class="card-action">
 						<a href="https://github.com/bryanlimy"><i class="fab fa-github"></i></a>
@@ -24,11 +24,11 @@ export const Team = () =>
 			<div class="col s12 m6 xl3">
 				<div class="card">
 					<div class="card-image">
-						<img src="images/celine.jpg" alt="" />
+						<img src="img/celine.jpeg" alt="Celine Kim" />
 					</div>
 					<div class="card-content">
 						<h4>Celine Kim</h4>
-						<p>[Text]</p>
+						<p>Celine Kim</p>
 					</div>
 					<div class="card-action">
 						<a href="https://github.com/celinekim"><i class="fab fa-github"></i></a>
@@ -39,11 +39,11 @@ export const Team = () =>
 			<div class="col s12 m6 xl3">
 				<div class="card">
 					<div class="card-image">
-						<img src="http://via.placeholder.com/640x480" alt="" />
+						<img src="img/dominick.jpeg" alt="Dominick Han" />
 					</div>
 					<div class="card-content">
 						<h4>Dominick Han</h4>
-						<p>[Text]</p>
+						<p>University of Toronto, 4th Year Undergraduate; Computer Science Specialist & Bioinformatics Specialist</p>
 					</div>
 					<div class="card-action">
 						<a href="https://github.com/dominick-han"><i class="fab fa-github"></i></a>
@@ -54,11 +54,11 @@ export const Team = () =>
 			<div class="col s12 m6 xl3">
 				<div class="card">
 					<div class="card-image">
-						<img src="http://via.placeholder.com/640x480" alt="" />
+						<img src="img/monica.jpeg" alt="Monica Iqbal" />
 					</div>
 					<div class="card-content">
 						<h4>Monica Iqbal</h4>
-						<p>[Text]</p>
+						<p>21-year-old comp sci major at the University of Toronto. i'm looking to use computer science to save the environment.</p>
 					</div>
 					<div class="card-action">
 						<a href="https://github.com/enviroprogrammer"><i class="fab fa-github"></i></a>
