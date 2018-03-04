@@ -72,7 +72,21 @@ export class Home extends React.Component {
 					</div>
 					<div class="row">
 						<h3>Monitor Your Cryptocurrency!</h3>
-						<p class="text-content">Lorem ipsum dolor sit amet, in vitae dapibus justo diam augue odio. Et quis, interdum ipsum metus, eu vitae felis nisl semper sapien cras. Sed wisi et sociosqu pede mauris. Mauris est tristique massa integer et, dui vel pellentesque, vel non dignissim vel mauris rhoncus pretium, duis sed ante wisi nulla nulla id, ultrices praesent odio elit mus varius. Eget lorem ultricies, eget sit vel suscipit nec morbi, nulla amet reprehenderit ante nunc donec ac, nulla commodo sit sagittis amet in dolor, lectus in proin. Elit malesuada parturient ultricies wisi sed accumsan, in dapibus elit luctus, eu sapien nam proin quis lorem ut.</p>
+						<p class="text-content">MonUs is your one-stop shop to get the latest on your favourite cryptocurrencies. We monitor the prices of the top ten currencies:
+						<ul>
+						<li>Bitcoin (BTC)</li>
+						<li>Ethereum (ETH)</li>
+						<li>Ripple (XRP)</li>
+						<li>Bitcoin Cash (BCH)</li>
+						<li>Cardano (ADA)</li>
+						<li>Stellar (XLM)</li>
+						<li>NEO (NEO)</li>
+						<li>Litecoin (LTC)</li>
+						<li>EOS (EOS)</li>
+						<li>NEM (XEM)</li>
+						</ul>
+						We incorporate real-time graphs that display current and historical data for cryptocurrencies. You can create an account to follow your favourite cryptocurrencies and perform mock trading, in which you will receive $5000 USD once you create an account. Each graph updates every few seconds.
+						</p>
 					</div>
 				</div>
 			</div>
