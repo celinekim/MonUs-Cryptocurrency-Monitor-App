@@ -29,7 +29,7 @@ class App extends React.Component {
 						<div class="nav-wrapper">
 							<div class="nav-left">
 								<a href="#" data-activates="slide-out" id="sideNavButton"><i class="material-icons">menu</i></a>
-								<img class="brand-logo spin" src="favicon.png"/>
+								<div class='brand-logo'><a href="/"><img class="spin" src="favicon.png"/></a></div>
 							</div>
 							<ul id="nav-mobile" class="right">
 								<li><a id='loginModalTrigger' class='modal-trigger' onClick={() => $('#loginModal').modal('open')}>Login</a></li>
@@ -43,7 +43,7 @@ class App extends React.Component {
 								<div class="background">
 									<img src="background/financial-district.jpg" width="100%"/>
 								</div>
-								<img class="brand-logo spin" src="favicon.png"/>
+								<img class="brand-logo" src="favicon.png"/>
 								<span class="white-text name">Test User</span>
 								<span class="white-text email">test.user@email.com</span>
 							</div>
