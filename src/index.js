@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { Home } from './views/home.jsx';
 import { About } from './views/about.jsx';
 import { Login } from './views/login.jsx';
+import { SignUp } from './views/sign-up.jsx';
 
 import './index.css';
 
