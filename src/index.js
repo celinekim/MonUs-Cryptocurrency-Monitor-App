@@ -8,6 +8,7 @@ import { Home } from './views/home.jsx';
 import { Team } from './views/team.jsx';
 import { Login } from './components/login.jsx';
 import { SignUp } from './components/sign-up.jsx';
+import { SideNav } from './components/side-nav.jsx';
 import { MainGraph } from './views/main-graph.jsx';
 
 import './index.css';
@@ -25,10 +26,11 @@ class App extends React.Component {
 				<div>
 					<Login />
 					<SignUp />
+					<SideNav />
 					<nav class="nav-extended">
 						<div class="nav-wrapper">
 							<div class="nav-left">
-								<a href="#" data-activates="slide-out" id="sideNavButton"><i class="fas fa-bars"></i></a>
+								<a href="#" data-activates="side-nav" id="sideNavButton"><i class="fas fa-bars"></i></a>
 								<div class='brand-logo'><Link to="/"><img class="spin" src="favicon.png"/></Link></div>
 							</div>
 							<ul id="nav-mobile" class="right">
@@ -37,21 +39,6 @@ class App extends React.Component {
 							</ul>
 						</div>
 					</nav>
-					<ul id="slide-out" class="side-nav">
-						<li>
-							<div class="user-view">
-								<div class="background">
-									<img src="img/financial-district.jpg" width="100%"/>
-								</div>
-								<img class="brand-logo" src="favicon.png"/>
-								<span class="white-text name">Test User</span>
-								<span class="white-text email">test.user@email.com</span>
-							</div>
-						</li>
-						<li><Link to="/" onClick={() => $('#sideNavButton').sideNav('hide')}><i class="fas fa-home"></i> Home</Link></li>
-						<li><Link to="/team" onClick={() => $('#sideNavButton').sideNav('hide')}><i class="fas fa-users"></i> Team</Link></li>
-						<li><Link to="/main-graph" onClick={() => $('#sideNavButton').sideNav('hide')}><i class="fas fa-chart-line"></i> Graphs</Link></li>
-					</ul>
 					<div class="main">
 						<Switch>
 							<Route path="/" exact component={Home} />
