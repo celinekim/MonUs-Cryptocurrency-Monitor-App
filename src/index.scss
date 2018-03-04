@@ -148,18 +148,18 @@ nav {
 		@media only screen and (max-width:600px) {
 			width:95%;
 		}
+		.nav-left {
+			display: flex;
+			>a {
+				margin-right: 15px;
+			}
+		}
 		.brand-logo {
 			position:inherit;
 			img {
 				height: 70%;
 				width: auto;
 				vertical-align: middle;
-			}
-			@media only screen and (max-width: 992px) {
-				left:inherit;
-				-webkit-transform: inherit;
-				transform: inherit;
-				padding-left:10px
 			}
 		}
 		ul {
@@ -352,12 +352,9 @@ nav {
 }
 
 .spin {
-	cursor: pointer;
-	&:hover {
-		-webkit-animation: spinAround 1.5s linear infinite;
-		-moz-animation: spinAround 1.5s linear infinite;
-		animation: spinAround 1.5s linear infinite;
-	}
+	-webkit-animation: spinAround 3s linear infinite;
+	-moz-animation: spinAround 3s linear infinite;
+	animation: spinAround 3s linear infinite;
 	@-webkit-keyframes spinAround {
 		from { -webkit-transform: rotate(0deg) }
 		to { -webkit-transform: rotate(360deg) }

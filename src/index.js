@@ -25,9 +25,12 @@ class App extends React.Component {
 				<div>
 					<Login />
 					<SignUp />
-					<nav>
+					<nav class="nav-extended">
 						<div class="nav-wrapper">
-							<a href="#" data-activates="slide-out" id="sideNavButton" class="brand-logo"><img class="spin" src="favicon.png"/></a>
+							<div class="nav-left">
+								<a href="#" data-activates="slide-out" id="sideNavButton"><i class="material-icons">menu</i></a>
+								<img class="brand-logo spin" src="favicon.png"/>
+							</div>
 							<ul id="nav-mobile" class="right">
 								<li><a id='loginModalTrigger' class='modal-trigger' onClick={() => $('#loginModal').modal('open')}>Login</a></li>
 								<li><a id='signUpModalTrigger' class='modal-trigger' onClick={() => $('#signUpModal').modal('open')}>Sign Up</a></li>
@@ -40,14 +43,14 @@ class App extends React.Component {
 								<div class="background">
 									<img src="background/financial-district.jpg" />
 								</div>
-								<a href="#"><img class="circle" src="favicon.png"/></a>
+								<img class="brand-logo spin" src="favicon.png"/>
 								<span class="white-text name">Test User</span>
 								<span class="white-text email">test.user@email.com</span>
 							</div>
 						</li>
-						<li><a href="#/"> Home</a></li>
-						<li><a href="#/about" >About</a></li>
-						<li><a href="#/main-graph">Graphs</a></li>
+						<li><Link to="/"> Home</Link></li>
+						<li><Link to="/about" >About</Link></li>
+						<li><Link to="/main-graph">Graphs</Link></li>
 					</ul>
 					<div class="content-wrapper main">
 						<Switch>
