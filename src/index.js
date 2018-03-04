@@ -41,7 +41,7 @@ class App extends React.Component {
 						<li>
 							<div class="user-view">
 								<div class="background">
-									<img src="background/financial-district.jpg" width="100%"/>
+									<img src="img/financial-district.jpg" width="100%"/>
 								</div>
 								<img class="brand-logo" src="favicon.png"/>
 								<span class="white-text name">Test User</span>
