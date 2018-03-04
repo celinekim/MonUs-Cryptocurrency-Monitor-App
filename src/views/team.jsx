@@ -58,7 +58,7 @@ export const Team = () =>
 					</div>
 					<div class="card-content">
 						<h4>Monica Iqbal</h4>
-						<p>21-year-old comp sci major at the University of Toronto. i'm looking to use computer science to save the environment.</p>
+						<p>21-year-old comp sci major at the University of Toronto, with a double minor in environmental geography and environmental studies. I'm looking to use computer science to save the environment.</p>
 					</div>
 					<div class="card-action">
 						<a href="https://github.com/enviroprogrammer"><i class="fab fa-github"></i></a>
