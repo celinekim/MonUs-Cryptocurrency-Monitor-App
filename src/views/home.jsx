@@ -55,7 +55,9 @@ export class Home extends React.Component {
 								}
 							}
 						}]
-					}
+					},
+					responsive: true,
+					maintainAspectRatio: false
 				}
 			})
 			setInterval(function() {
@@ -65,18 +67,12 @@ export class Home extends React.Component {
 		return (
 			<div id="home">
 				<div class="container-wrapper">
-					<div class="container">
-						<canvas id="sampleGraph" width="400" height="400"></canvas>
-						<div class="row">
-							<div class="content-container col s12 l6">
-								<h2 class="text-title">About MonUs</h2>
-								<h3 class="text-subtitle">Monitor Your Cryptocurrency!</h3>
-								<p class="text-content">Lorem ipsum dolor sit amet, in vitae dapibus justo diam augue odio. Et quis, interdum ipsum metus, eu vitae felis nisl semper sapien cras. Sed wisi et sociosqu pede mauris. Mauris est tristique massa integer et, dui vel pellentesque, vel non dignissim vel mauris rhoncus pretium, duis sed ante wisi nulla nulla id, ultrices praesent odio elit mus varius. Eget lorem ultricies, eget sit vel suscipit nec morbi, nulla amet reprehenderit ante nunc donec ac, nulla commodo sit sagittis amet in dolor, lectus in proin. Elit malesuada parturient ultricies wisi sed accumsan, in dapibus elit luctus, eu sapien nam proin quis lorem ut.</p>
-							</div>
-							<div class="image-container col s12 l6">
-								<img class="responsive-img profile-img" src="http://via.placeholder.com/640x480"/>
-							</div>
-						</div>
+					<div class='chart-container'>
+						<canvas id="sampleGraph"></canvas>
+					</div>
+					<div class="row">
+						<h3>Monitor Your Cryptocurrency!</h3>
+						<p class="text-content">Lorem ipsum dolor sit amet, in vitae dapibus justo diam augue odio. Et quis, interdum ipsum metus, eu vitae felis nisl semper sapien cras. Sed wisi et sociosqu pede mauris. Mauris est tristique massa integer et, dui vel pellentesque, vel non dignissim vel mauris rhoncus pretium, duis sed ante wisi nulla nulla id, ultrices praesent odio elit mus varius. Eget lorem ultricies, eget sit vel suscipit nec morbi, nulla amet reprehenderit ante nunc donec ac, nulla commodo sit sagittis amet in dolor, lectus in proin. Elit malesuada parturient ultricies wisi sed accumsan, in dapibus elit luctus, eu sapien nam proin quis lorem ut.</p>
 					</div>
 				</div>
 			</div>
