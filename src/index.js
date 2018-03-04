@@ -6,6 +6,7 @@ import { Home } from './views/home.jsx';
 import { About } from './views/about.jsx';
 import { Login } from './views/login.jsx';
 import { SignUp } from './views/sign-up.jsx';
+import { MainGraph } from './views/main-graph.jsx';
 
 import './index.css';
 
