@@ -28,7 +28,7 @@ class App extends React.Component {
 					<nav class="nav-extended">
 						<div class="nav-wrapper">
 							<div class="nav-left">
-								<a href="#" data-activates="slide-out" id="sideNavButton"><i class="material-icons">menu</i></a>
+								<a href="#" data-activates="slide-out" id="sideNavButton"><i class="fas fa-bars"></i></a>
 								<img class="brand-logo spin" src="favicon.png"/>
 							</div>
 							<ul id="nav-mobile" class="right">
@@ -48,20 +48,22 @@ class App extends React.Component {
 								<span class="white-text email">test.user@email.com</span>
 							</div>
 						</li>
-						<li><Link to="/" onClick={() => $('#sideNavButton').sideNav('hide')}> Home</Link></li>
-						<li><Link to="/team" onClick={() => $('#sideNavButton').sideNav('hide')}>Team</Link></li>
-						<li><Link to="/main-graph" onClick={() => $('#sideNavButton').sideNav('hide')}>Graphs</Link></li>
+						<li><Link to="/" onClick={() => $('#sideNavButton').sideNav('hide')}><i class="fas fa-home"></i> Home</Link></li>
+						<li><Link to="/team" onClick={() => $('#sideNavButton').sideNav('hide')}><i class="fas fa-users"></i> Team</Link></li>
+						<li><Link to="/main-graph" onClick={() => $('#sideNavButton').sideNav('hide')}><i class="fas fa-chart-line"></i> Graphs</Link></li>
 					</ul>
 					<div class="main">
 						<Switch>
 							<Route path="/" exact component={Home} />
 							<Route path="/team" exact component={Team} />
 							<Route path="/main-graph" exact component={MainGraph} />
-							<Route render={() => <div id="team" class="row">
-													<div class="content-container col s12">
-														<h2 class="text-title text-center">404 - Page not found</h2>
-													</div>
-												</div>} />
+							<Route render={() =>
+								<div id="team" class="row">
+									<div class="content-container col s12">
+										<h2 class="text-title text-center">404 - Page not found</h2>
+									</div>
+								</div>
+							} />
 						</Switch>
 					</div>
 				</div>
