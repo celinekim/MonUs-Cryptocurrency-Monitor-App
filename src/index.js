@@ -14,12 +14,13 @@ import './index.css';
 
 
 class App extends React.Component {
+	componentDidMount() {
+		$('#sideNavButton').sideNav();
+		$('#loginModal').modal();
+		$('#signUpModal').modal();
+	}
+
 	render() {
-		$(document).ready(function() {
-			$('#sideNavButton').sideNav()
-			$('#loginModal').modal()
-			$('#signUpModal').modal()
-		})
 		return (
 			<Router>
 				<div>
@@ -41,16 +42,16 @@ class App extends React.Component {
 						<li>
 							<div class="user-view">
 								<div class="background">
-									<img src="background/financial-district.jpg" />
+									<img src="background/financial-district.jpg" width="100%"/>
 								</div>
 								<img class="brand-logo spin" src="favicon.png"/>
 								<span class="white-text name">Test User</span>
 								<span class="white-text email">test.user@email.com</span>
 							</div>
 						</li>
-						<li><Link to="/"> Home</Link></li>
-						<li><Link to="/about" >About</Link></li>
-						<li><Link to="/main-graph">Graphs</Link></li>
+						<li><Link to="/" onClick={() => $('#sideNavButton').sideNav('hide')}> Home</Link></li>
+						<li><Link to="/about" onClick={() => $('#sideNavButton').sideNav('hide')}>About</Link></li>
+						<li><Link to="/main-graph" onClick={() => $('#sideNavButton').sideNav('hide')}>Graphs</Link></li>
 					</ul>
 					<div class="content-wrapper main">
 						<Switch>
