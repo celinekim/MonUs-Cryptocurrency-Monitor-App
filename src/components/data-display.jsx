@@ -78,7 +78,7 @@ export class DataDisplay extends React.Component {
                     this.setState({ labels: tempLabels, dataset: tempData });
 
                     if (remaining && remaining.length > 0) {
-                        this.l
+                        this.loadCurrencyData(remaining[0], tNow, remaining.slice(1));
                     }
 				}
 			}

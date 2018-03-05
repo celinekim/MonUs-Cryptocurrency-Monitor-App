@@ -5,11 +5,11 @@ export const Team = () =>
 	<div id="team" className="container-wrapper color-container-wrapper">
 		<div className="row wide">
 			<div className="content-container col s12">
-				<h2 class="text-shadow">The Team</h2>
+				<h2 className="text-shadow">The Team</h2>
 			</div>
 			{
 				Const.members.map((member) => (
-					<div className="col s12 m6 l3">
+					<div className="col s12 m6 l3" key={member.name}>
 						<div className="card">
 							<div className="card-image">
 								<img src={`${Const.imageRoute}${member.image}`} alt={member.name} />

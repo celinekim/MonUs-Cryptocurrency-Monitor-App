@@ -9,7 +9,7 @@ export class SideNav extends React.Component {
 			<ul id="side-nav" className="side-nav">
 				<li>
 					<div className="user-view">
-						<img className="brand-logo" src="img/bitcoin.png" height="64px"/>
+						<img className="brand-logo" src="img/bitcoin.png" height="64px" alt=""/>
 						{(this.props.isLoggedIn && localStorage.getItem('firstName')) ? (
 							<span className="white-text name">{localStorage.getItem('firstName')} {localStorage.getItem('lastName')}</span>
 						) : (

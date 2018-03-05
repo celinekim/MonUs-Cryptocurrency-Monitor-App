@@ -13,7 +13,7 @@ export class Home extends React.Component {
 				</div>
 
 				<div className="row">
-					<h3 class="text-shadow">Monitor Your Cryptocurrency!</h3>
+					<h3 className="text-shadow">Monitor Your Cryptocurrency!</h3>
 					<p className="text-content">MonUs is your one-stop shop to get the latest on your favourite cryptocurrencies. We monitor the prices of the top ten currencies:</p>
 					<ul className="currency-list">
 						<li>Bitcoin (BTC)</li>

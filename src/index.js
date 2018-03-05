@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import $ from 'jquery';
-import { sideNav, toast} from 'materialize-css';
+import { toast } from 'materialize-css';
 
 import { Home } from './views/home';
 import { Team } from './views/team';
@@ -21,7 +21,6 @@ class App extends React.Component {
 		};
 	}
 
-
 	componentDidMount() {
 		$('#sideNavButton').sideNav();
 		$('#loginModal').modal();
@@ -34,7 +33,7 @@ class App extends React.Component {
 
 	logOut = () => {
 		this.setState({isLoggedIn: null});
-		localStorage.setItem('email', null);
+		localStorage.clear();
 		toast('Logged out', 3000);
 	};
 
@@ -48,8 +47,8 @@ class App extends React.Component {
 					<nav className="nav-extended">
 						<div className="nav-wrapper">
 							<div className="nav-left">
-								<a href="#" data-activates="side-nav" id="sideNavButton"><i className="fas fa-bars"></i></a>
-								<div className='brand-logo'><Link to="/"><img className="spin" src="img/bitcoin.png"/></Link></div>
+								<a href="" data-activates="side-nav" id="sideNavButton"><i className="fas fa-bars"></i></a>
+								<div className='brand-logo'><Link to="/"><img className="spin" src="img/bitcoin.png" alt=""/></Link></div>
 							</div>
 							{this.state.isLoggedIn ? (
 								<ul id="nav-mobile" className="right">
@@ -57,8 +56,8 @@ class App extends React.Component {
 								</ul>
 							) : (
 								<ul id="nav-mobile" className="right">
-									<li><a id='loginModalTrigger' className='modal-trigger' onClick={() => $('#loginModal').modal('open')}>Login</a></li>
-									<li><a id='signUpModalTrigger' className='modal-trigger' onClick={() => $('#signUpModal').modal('open')}>Sign Up</a></li>
+									<li><a id='loginModalTrigger' onClick={() => $('#loginModal').modal('open')}>Login</a></li>
+									<li><a id='signUpModalTrigger' onClick={() => $('#signUpModal').modal('open')}>Sign Up</a></li>
 								</ul>
 							)}
 						</div>
