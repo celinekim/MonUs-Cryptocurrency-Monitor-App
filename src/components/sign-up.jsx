@@ -11,27 +11,27 @@ export const SignUp = () =>
 				</div>
 				<div className="input-field col s12">
 					<input id="signUpFirstname" type="text" className="validate" />
-					<label for="signUpFirstname">First Name</label>
+					<label htmlFor="signUpFirstname">First Name</label>
 				</div>
 				<div className="input-field col s12">
 					<input id="signUpLastname" type="text" className="validate" />
-					<label for="signUpLastname">Last Name</label>
+					<label htmlFor="signUpLastname">Last Name</label>
 				</div>
 				<div className="input-field col s12">
 					<input id="signUpEmail" type="email" className="validate" />
-					<label for="signUpEmail">Email</label>
+					<label htmlFor="signUpEmail">Email</label>
 				</div>
 				<div className="input-field col s12">
 					<input id="signUpUsername" type="text" className="validate" />
-					<label for="signUpUsername">Username</label>
+					<label htmlFor="signUpUsername">Username</label>
 				</div>
 				<div className="input-field col s12">
 					<input id="signUpPassword" type="password" className="validate" />
-					<label for="signUpPassword">Password</label>
+					<label htmlFor="signUpPassword">Password</label>
 				</div>
 				<div className="input-field col s12">
 					<input id="signUpConfirmpassword" type="password" className="validate" />
-					<label for="signUpConfirmpassword">Confirm Password</label>
+					<label htmlFor="signUpConfirmpassword">Confirm Password</label>
 				</div>
 			</div>
 			<div className="modal-footer">

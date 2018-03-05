@@ -1,7 +1,7 @@
 import React from 'react';
-import { SampleGraph } from '../components/sample-graph';
+import { DataDisplay } from '../components/data-display';
 
 export const MainGraph = () =>
 	<div id="main-graph" className="container-wrapper color-container-wrapper">
-		<SampleGraph />
+		<DataDisplay />
 	</div>;

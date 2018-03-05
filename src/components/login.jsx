@@ -11,11 +11,11 @@ export const Login = () =>
 				</div>
 				<div className="input-field col s12">
 					<input id="loginEmail" type="email" className="validate" />
-					<label for="loginEmail">Email</label>
+					<label htmlFor="loginEmail">Email</label>
 				</div>
 				<div className="input-field col s12">
 					<input id="loginPassword" type="password" className="validate" />
-					<label for="loginPassword">Password</label>
+					<label htmlFor="loginPassword">Password</label>
 				</div>
 			</div>
 			<div className="modal-footer">
