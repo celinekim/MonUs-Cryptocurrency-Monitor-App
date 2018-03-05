@@ -6,9 +6,6 @@ export const SideNav = () =>
 	<ul id="side-nav" className="side-nav">
 		<li>
 			<div className="user-view">
-				<div className="background">
-					<img src="img/financial-district.jpg" height="100%"/>
-				</div>
 				<img className="brand-logo" src="img/bitcoin.png" height="64px"/>
 				{localStorage.getItem('firstName') &&
 					<span className="white-text name">{localStorage.getItem('firstName')} {localStorage.getItem('lastName')}</span>

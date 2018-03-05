@@ -27,7 +27,6 @@ export class Login extends React.Component {
 				<form className='login-form'>
 					<div className='modal-content'>
 						<div className="modal-title-container col s12">
-							<img className="brand-logo" src="/img/bitcoin.png" height="64px" />
 							<h3 className="modal-title">Login</h3>
 						</div>
 						<div className="input-field col s12">

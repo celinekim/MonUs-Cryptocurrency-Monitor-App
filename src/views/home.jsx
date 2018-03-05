@@ -6,14 +6,14 @@ export class Home extends React.Component {
 		return (
 			<div id="home" className="container-wrapper color-container-wrapper">
 				<h1>MonUs</h1>
-				<h2 className="no-margin">Your cryptocurrency monitor</h2>
+				<h2 className="no-margin text-shadow">Your cryptocurrency monitor</h2>
 
 				<div className='chart-container row'>
 					<Graph limit={10} unit='minute' />
 				</div>
 
 				<div className="row">
-					<h3>Monitor Your Cryptocurrency!</h3>
+					<h3 class="text-shadow">Monitor Your Cryptocurrency!</h3>
 					<p className="text-content">MonUs is your one-stop shop to get the latest on your favourite cryptocurrencies. We monitor the prices of the top ten currencies:</p>
 					<ul className="currency-list">
 						<li>Bitcoin (BTC)</li>

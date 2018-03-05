@@ -91,7 +91,9 @@ export class Graph extends React.Component {
 			options: {
 				title: {
 					display: true,
-					text: 'Live USD to Cryptocurrency (Updates every 30s)'
+					text: '(updates every 30s)',
+					position: 'bottom',
+					fontColor: '#aaa'
 				},
 				scales: {
 					xAxes: [
@@ -109,7 +111,7 @@ export class Graph extends React.Component {
 						{
 							id: 'BTC',
 							scaleLabel: {
-								labelString: '$/BTC',
+								labelString: 'USD/BTC',
 								display: true,
 								fontColor: "rgb(247, 147, 26)"
 							},
@@ -122,7 +124,7 @@ export class Graph extends React.Component {
 						{
 							id: 'ETH',
 							scaleLabel: {
-								labelString: '$/ETH',
+								labelString: 'USD/ETH',
 								display: true,
 								fontColor: "rgb(3, 169, 244)"
 							},

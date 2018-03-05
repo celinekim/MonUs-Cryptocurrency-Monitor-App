@@ -5,7 +5,7 @@ export const Team = () =>
 	<div id="team" className="container-wrapper color-container-wrapper">
 		<div className="row wide">
 			<div className="content-container col s12">
-				<h1>The Team</h1>
+				<h2 class="text-shadow">The Team</h2>
 			</div>
 			{
 				Const.members.map((member) => (
