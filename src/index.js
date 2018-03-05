@@ -27,27 +27,27 @@ class App extends React.Component {
 					<Login />
 					<SignUp />
 					<SideNav />
-					<nav class="nav-extended">
-						<div class="nav-wrapper">
-							<div class="nav-left">
-								<a href="#" data-activates="side-nav" id="sideNavButton"><i class="fas fa-bars"></i></a>
-								<div class='brand-logo'><Link to="/"><img class="spin" src="img/bitcoin.png"/></Link></div>
+					<nav className="nav-extended">
+						<div className="nav-wrapper">
+							<div className="nav-left">
+								<a href="#" data-activates="side-nav" id="sideNavButton"><i className="fas fa-bars"></i></a>
+								<div className='brand-logo'><Link to="/"><img className="spin" src="img/bitcoin.png"/></Link></div>
 							</div>
-							<ul id="nav-mobile" class="right">
-								<li><a id='loginModalTrigger' class='modal-trigger' onClick={() => $('#loginModal').modal('open')}>Login</a></li>
-								<li><a id='signUpModalTrigger' class='modal-trigger' onClick={() => $('#signUpModal').modal('open')}>Sign Up</a></li>
+							<ul id="nav-mobile" className="right">
+								<li><a id='loginModalTrigger' className='modal-trigger' onClick={() => $('#loginModal').modal('open')}>Login</a></li>
+								<li><a id='signUpModalTrigger' className='modal-trigger' onClick={() => $('#signUpModal').modal('open')}>Sign Up</a></li>
 							</ul>
 						</div>
 					</nav>
-					<div class="main">
+					<div className="main">
 						<Switch>
 							<Route path="/" exact component={Home} />
 							<Route path="/team" exact component={Team} />
 							<Route path="/main-graph" exact component={MainGraph} />
 							<Route render={() =>
-								<div id="team" class="row">
-									<div class="content-container col s12">
-										<h2 class="text-title text-center">404 - Page not found</h2>
+								<div id="team" className="row">
+									<div className="content-container col s12">
+										<h2 className="text-title text-center">404 - Page not found</h2>
 									</div>
 								</div>
 							} />

@@ -104,16 +104,16 @@ export class Home extends React.Component {
 
 	render() {
 		return (
-			<div id="home" class="container-wrapper color-container-wrapper">
+			<div id="home" className="container-wrapper color-container-wrapper">
 				<h1>MonUs</h1>
-				<h2 class="no-margin">Your cryptocurrency monitor</h2>
-				<div class='chart-container row'>
+				<h2 className="no-margin">Your cryptocurrency monitor</h2>
+				<div className='chart-container row'>
 					<canvas id="sampleGraph"></canvas>
 				</div>
-				<div class="row">
+				<div className="row">
 					<h3>Monitor Your Cryptocurrency!</h3>
-					<p class="text-content">MonUs is your one-stop shop to get the latest on your favourite cryptocurrencies. We monitor the prices of the top ten currencies:
-					<ul class="currency-list">
+					<p className="text-content">MonUs is your one-stop shop to get the latest on your favourite cryptocurrencies. We monitor the prices of the top ten currencies:
+					<ul className="currency-list">
 						<li>Bitcoin (BTC)</li>
 						<li>Ethereum (ETH)</li>
 						<li>Ripple (XRP)</li>

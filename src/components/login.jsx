@@ -2,22 +2,22 @@ import React from 'react';
 import $ from "jquery";
 
 export const Login = () =>
-	<div id='loginModal' class='modal'>
-		<form class='login-form'>
-			<div class='modal-content'>
+	<div id='loginModal' className='modal'>
+		<form className='login-form'>
+			<div className='modal-content'>
 				<h3>Login</h3>
-				<div class="input-field col s12">
-					<input id="loginEmail" type="email" class="validate" />
+				<div className="input-field col s12">
+					<input id="loginEmail" type="email" className="validate" />
 					<label for="loginEmail">Email</label>
 				</div>
-				<div class="input-field col s12">
-					<input id="loginPassword" type="password" class="validate" />
+				<div className="input-field col s12">
+					<input id="loginPassword" type="password" className="validate" />
 					<label for="loginPassword">Password</label>
 				</div>
 			</div>
-			<div class="modal-footer">
-				<button class="waves-effect modal-action btn-flat" type="button" onClick={() => $('#loginModal').modal('close')}>Cancel</button>
-				<button class="waves-effect modal-action btn-flat" type="submit">Login</button>
+			<div className="modal-footer">
+				<button className="waves-effect modal-action btn-flat" type="button" onClick={() => $('#loginModal').modal('close')}>Cancel</button>
+				<button className="waves-effect modal-action btn-flat" type="submit">Login</button>
 			</div>
 		</form>
 	</div>;
