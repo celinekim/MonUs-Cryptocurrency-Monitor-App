@@ -62,7 +62,7 @@ export class Summary extends React.Component {
 								<a onClick={() => {
 									if (parseFloat(this.refs[symbol].value) > 0) {
 										if (this.transaction(symbol, -parseFloat(this.refs[symbol].value))) {
-											toast(`Sould ${this.refs[symbol].value} ${symbol}`, 3000)
+											toast(`Sold ${this.refs[symbol].value} ${symbol}`, 3000)
 										} else {
 											toast(`Not sufficient ${symbol}!`, 3000)
 										}
