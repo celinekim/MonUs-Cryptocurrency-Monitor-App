@@ -35,14 +35,14 @@ export class Home extends React.Component {
 						data: [],
 						yAxisID: 'BTC',
 						label: "BTC",
-						borderColor: "#f7931a",
+						borderColor: "rgb(247, 147, 26)",
 						fill: false
 					},
 					{
 						data: [],
 						yAxisID: 'ETH',
 						label: "ETH",
-						borderColor: "#90A4AE",
+						borderColor: "rgb(3, 169, 244)",
 						fill: false
 					}
 				]
@@ -69,18 +69,26 @@ export class Home extends React.Component {
 							scaleLabel: {
 								labelString: '$/BTC',
 								display: true,
+								fontColor: "rgb(247, 147, 26)"
 							},
 							type: 'linear',
-							position: 'left'
+							position: 'left',
+							ticks: {
+								fontColor: "rgba(247, 147, 26, 0.5)"
+							}
 						},
 						{
 							id: 'ETH',
 							scaleLabel: {
 								labelString: '$/ETH',
 								display: true,
+								fontColor: "rgb(3, 169, 244)"
 							},
 							type: 'linear',
-							position: 'right'
+							position: 'right',
+							ticks: {
+								fontColor: "rgba(3, 169, 244, 0.5)"
+							}
 						}
 					]
 				},
@@ -91,7 +99,7 @@ export class Home extends React.Component {
 		addData(chart);
 		setInterval(function () {
 			addData(chart);
-		}, 1000);
+		}, 10000);
 	}
 
 	render() {
