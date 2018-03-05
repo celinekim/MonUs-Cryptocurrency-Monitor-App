@@ -1,8 +1,8 @@
 import React from 'react';
-import { DataDisplay } from '../components/data-display';
+import { Graph } from '../components/graph';
 
 
-export class MainGraph extends React.Component {
+export class MyCurrency extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {unit: 'minute', limit: 10};
@@ -15,7 +15,7 @@ export class MainGraph extends React.Component {
 	render() {
 		return (
 			<div id="main-graph" className="container-wrapper color-container-wrapper">
-				<DataDisplay unit={this.state.unit} limit={this.state.limit} />
+				<Graph unit={this.state.unit} limit={this.state.limit} />
 			</div>
 		)
 	}

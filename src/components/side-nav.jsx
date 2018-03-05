@@ -10,11 +10,17 @@ export const SideNav = () =>
 					<img src="img/financial-district.jpg" height="100%"/>
 				</div>
 				<img className="brand-logo" src="img/bitcoin.png" height="64px"/>
-				<span className="white-text name">Test User</span>
-				<span className="white-text email">test.user@email.com</span>
+				{localStorage.getItem('firstName') &&
+					<span className="white-text name">{localStorage.getItem('firstName')} {localStorage.getItem('lastName')}</span>
+				}
+				{localStorage.getItem('email') ? (
+					<span className="white-text email">{localStorage.getItem('email')}</span>
+				) : (
+					<span className="white-text">Not logged in</span>
+				)}
 			</div>
 		</li>
 		<li><Link to="/" onClick={() => $('#sideNavButton').sideNav('hide')}><i className="fas fa-home"></i> Home</Link></li>
 		<li><Link to="/team" onClick={() => $('#sideNavButton').sideNav('hide')}><i className="fas fa-users"></i> Team</Link></li>
-		<li><Link to="/main-graph" onClick={() => $('#sideNavButton').sideNav('hide')}><i className="fas fa-chart-line"></i> Graphs</Link></li>
+		<li><Link to="/my-currency" onClick={() => $('#sideNavButton').sideNav('hide')}><i className="fas fa-chart-line"></i> My Cryptocurrencies</Link></li>
 	</ul>;

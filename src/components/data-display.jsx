@@ -78,7 +78,7 @@ export class DataDisplay extends React.Component {
                     this.setState({ labels: tempLabels, dataset: tempData });
 
                     if (remaining && remaining.length > 0) {
-                        this.loadCurrencyData(remaining[0], tNow, remaining.slice(1));
+                        this.l
                     }
 				}
 			}
@@ -110,7 +110,7 @@ export class DataDisplay extends React.Component {
             <div>
                 <h1>Past {limit} {unit}s</h1>
                 <div className='chart-container row'>
-                    
+
                     <Graph dataset={dataset} labels={labels} limit={limit} unit={unit} />
                 </div>
                 <SampleSummary dataset={dataset} labels={labels} />

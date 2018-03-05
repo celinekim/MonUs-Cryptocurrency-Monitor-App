@@ -9,13 +9,14 @@ export class Graph extends React.Component {
 		this.props = nextProps;
 		this.loadData(this.chart);
 	}
+
 	updateData(chart) {
 		chart.data.labels.push(Date.now());
 		let option = {
 			'url': 'https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=USD',
 			'json': true
 		};
-		Request.get(option, function(error, response, body) {
+		Request.get(option, (error, response, body) => {
 			if (error) {
 				console.log(error);
 			} else {

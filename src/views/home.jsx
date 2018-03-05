@@ -1,5 +1,5 @@
 import React from 'react';
-import { DataDisplay } from '../components/data-display';
+import { Graph } from '../components/graph';
 
 export class Home extends React.Component {
 	render() {
@@ -8,7 +8,9 @@ export class Home extends React.Component {
 				<h1>MonUs</h1>
 				<h2 className="no-margin">Your cryptocurrency monitor</h2>
 
-				<DataDisplay isHome={true} limit={10} unit='minute' />
+				<div className='chart-container row'>
+					<Graph limit={10} unit='minute' />
+				</div>
 
 				<div className="row">
 					<h3>Monitor Your Cryptocurrency!</h3>

@@ -9,7 +9,7 @@ import { Team } from './views/team';
 import { Login } from './components/login';
 import { SignUp } from './components/sign-up';
 import { SideNav } from './components/side-nav';
-import { MainGraph } from './views/main-graph';
+import { MyCurrency } from './views/my-currency';
 
 import './index.css';
 
@@ -43,7 +43,7 @@ class App extends React.Component {
 						<Switch>
 							<Route path="/" exact component={Home} />
 							<Route path="/team" exact component={Team} />
-							<Route path="/main-graph" exact component={MainGraph} />
+							<Route path="/my-currency" exact component={MyCurrency} />
 							<Route render={() =>
 								<div id="team" className="row">
 									<div className="content-container col s12">
