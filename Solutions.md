@@ -12,8 +12,12 @@ New users who want to follow certain cryptocurrencies and perform mock trading c
 
 3. Real-time graphs
 
-These graphs, updated every 30 seconds, display current and historical data for the top ten cryptocurrencies, which include Bitcoin and Ethereum. Users can view these graphs to see the trends.
+These graphs, updated every 30 seconds, display current and historical data for the top ten cryptocurrencies, which include Bitcoin and Ethereum. Users can view these graphs to see the trends. There is one on the homepage and there will be several in My Cryptocurrencies.
 
 4. Meet the team
 
 Users can learn more about the team behind the application and check out their GitHub and LinkedIn profiles.  
+
+5. My Cryptocurrencies
+
+The My Cryptocurrencies page, for users who are logged in, allows users to view graphs for the cryptocurrencies they follow. 
