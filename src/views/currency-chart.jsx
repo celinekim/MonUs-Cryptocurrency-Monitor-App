@@ -71,16 +71,9 @@ export class CurrencyView extends React.Component {
 						))}
 					</select>
 					<select id="select-currency2" onChange={this.changeCurrency2} value={this.state.currency2}>
-						<option value="BTC">BTC</option>
-						<option value="ETH">ETH</option>
-						<option value="LTC">LTC</option>
-						<option value="XRP">XRP</option>
-						<option value="BCH">BCH</option>
-						<option value="EOS">EOS</option>
-						<option value="XEM">XEM</option>
-						<option value="NEO">NEO</option>
-						<option value="XLM">XLM</option>
-						<option value="ADA">ADA</option>
+						{Currency.list.map((symbol) => (
+							<option key={symbol} value={symbol}>{symbol}</option>
+						))}
 					</select>
 				</div>
 
