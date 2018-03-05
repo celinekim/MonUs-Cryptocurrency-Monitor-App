@@ -133,6 +133,18 @@ strong {
 	background-color: $primary-color;
 }
 
+.btn-flat {
+	padding: 0 0.5em;
+	color: #2196F3;
+	border-radius: 2px;
+	&:focus {
+		background-color: inherit;
+	}
+}
+
+.waves-effect.waves-teal .waves-ripple {
+	background-color: $secondary-color;
+}
 
 .modal {
 	max-height: 80%;
@@ -491,7 +503,6 @@ nav {
 	>button {
 		margin: 0 5px !important;
 		padding: 0 10px;
-		background-color: $secondary-color;
 		color: #dddddd;
 	}
 	input {
