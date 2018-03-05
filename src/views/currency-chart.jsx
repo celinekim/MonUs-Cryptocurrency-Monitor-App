@@ -8,13 +8,18 @@ export class CurrencyChart extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {unit: localStorage.getItem('unit') || 'day',
-				limit: localStorage.getItem('limit') || 30};
+				limit: localStorage.getItem('limit') || 30,
+				currency1: 'BTC',
+				currency2: 'ETH'};
 	}
 
 	componentDidMount() {
 		$('select').material_select();
 		$('#select-limit').on('change', this.changeLimit);
 		$('#select-unit').on('change', this.changeUnit);
+		setTimeout(() => {
+			this.setState({currency1: 'BCH'});
+		}, 3000);
 	}
 
 	changeLimit = (event) => {
@@ -34,7 +39,6 @@ export class CurrencyChart extends React.Component {
 				<div className="graph-title">
 					<h1>Past</h1>
 					<select className="select-limit" id="select-limit" onChange={this.changeLimit} value={this.state.limit}>
-						<option value="7">7</option>
 						<option value="15">15</option>
 						<option value="30">30</option>
 						<option value="60">60</option>
@@ -46,8 +50,8 @@ export class CurrencyChart extends React.Component {
 						<option value="day">Days</option>
 					</select>
 				</div>
-				{/*<a onClick={() => alert(this.refs.limit.value)}>CLICK</a>*/}
-				<Graph unit={this.state.unit} limit={this.state.limit} />
+
+				<Graph unit={this.state.unit} limit={this.state.limit} currency={[this.state.currency1, this.state.currency2]} />
 				{/*<SampleSummary />*/}
 			</div>
 		)
