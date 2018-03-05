@@ -21,3 +21,7 @@ Users can learn more about the team behind the application and check out their G
 5. My Cryptocurrencies
 
 The My Cryptocurrencies page, for users who are logged in, allows users to view graphs for the cryptocurrencies they follow. 
+
+6. View history from a certain point of time
+
+Users can view historical data for cryptocurrencies of their choice starting from a certain point of time. For ex: they can view data from the last 30 minutes. 
