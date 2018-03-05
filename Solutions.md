@@ -12,16 +12,20 @@ New users who want to follow certain cryptocurrencies and perform mock trading c
 
 3. Real-time graphs
 
-These graphs, updated every 30 seconds, display current and historical data for the top ten cryptocurrencies, which include Bitcoin and Ethereum. Users can view these graphs to see the trends. There is one on the homepage and there will be several in My Cryptocurrencies.
+These graphs, updated every 30 seconds, display current and historical data for the top ten cryptocurrencies, which include Bitcoin and Ethereum. Users can view these graphs to see the trends. There is one on the homepage and in My Cryptocurrencies.
 
-4. Meet the team
+4. Learn about the team
 
 Users can learn more about the team behind the application and check out their GitHub and LinkedIn profiles.  
 
-5. My Cryptocurrencies
+5. Cryptocurrencies
 
-The My Cryptocurrencies page, for users who are logged in, allows users to view graphs for the cryptocurrencies they follow. 
+The Cryptocurrencies page allows users to view graphs for all ten cryptocurrencies that MonUs monitors. 
 
 6. View history from a certain point of time
 
 Users can view historical data for cryptocurrencies of their choice starting from a certain point of time. For ex: they can view data from the last 30 minutes. 
+
+7. Cryptocurrency table
+
+In the Cryptocurrencies page, below the graph is a table that displays the current price, quantity, and value of each cryptocurrency all in one place. Users can refer to this table if they want a summary of all the data.  
