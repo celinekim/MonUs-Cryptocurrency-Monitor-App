@@ -100,10 +100,7 @@ export class Graph extends React.Component {
 						{
 							type: 'time',
 							time: {
-								unit: 'minute',
-								displayFormats: {
-									'minute': 'h:mm a'
-								}
+								unit: this.props.unit,
 							}
 						}
 					],

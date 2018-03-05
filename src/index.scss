@@ -29,6 +29,7 @@ h1 {
 	color: #fff;
 	font-weight: 600;
 	margin: 1.5rem auto 0.5rem;
+	text-shadow: rgba(255, 255, 255, 0.7) 0 1px 2px;
 }
 
 h2 {
@@ -36,6 +37,7 @@ h2 {
 	font-size: 1.8em;
 	color: #ddd;
 	font-weight: 300;
+	text-shadow: rgba(255, 255, 255, 0.5) 0 1px 1px;
 }
 
 h3 {
@@ -437,5 +439,41 @@ nav {
 			line-height: 64px;
 			color: #343434;
 		}
+	}
+}
+
+.graph-title {
+	margin:0 auto;
+	display: block;
+	text-align: center;
+	width: max-content;
+	>* {
+		display: inline-block;
+		margin: 0 7px;
+	}
+	.select-wrapper {
+		>.caret {
+			color: darkgray;
+		}
+		>input {
+			color: #fff;
+			font-weight: 600;
+			font-size: 2.3em;
+			margin: 0;
+
+			text-shadow: rgba(255, 255, 255, 0.7) 0 1px 2px;
+		}
+		.dropdown-content {
+			background-color: $secondary-color;
+			li>span {
+				color: white;
+			}
+		}
+	}
+	.select-unit >input{
+		width: 150px;
+	}
+	.select-limit >input{
+		width: 100px;
 	}
 }
