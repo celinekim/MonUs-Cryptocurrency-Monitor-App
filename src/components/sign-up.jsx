@@ -3,16 +3,11 @@ import $ from "jquery";
 import {toast} from "materialize-css";
 
 export class SignUp extends React.Component {
-	constructor(props) {
-		super(props);
-		this.submit = this.submit.bind(this);
-	}
-
-	close() {
+	close = () => {
 		$('#signUpModal').modal('close');
-	}
+	};
 
-	submit() {
+	submit = () => {
 		if (this.refs.firstName.classList.contains('valid') &&
 				this.refs.lastName.classList.contains('valid') &&
 				this.refs.email.classList.contains('valid') &&
@@ -22,8 +17,9 @@ export class SignUp extends React.Component {
 			localStorage.setItem('lastName', this.refs.lastName.value);
 			localStorage.setItem('email', this.refs.email.value);
 			toast(`Logged in as ${localStorage.firstName} ${localStorage.lastName}`, 3000);
+			this.props.logIn();
 		}
-	}
+	};
 
 	render() {
 		return (

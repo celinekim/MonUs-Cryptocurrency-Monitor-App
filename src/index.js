@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import $ from 'jquery';
-import {sideNav} from 'materialize-css';
+import { sideNav, toast} from 'materialize-css';
 
 import { Home } from './views/home';
 import { Team } from './views/team';
@@ -14,29 +14,53 @@ import { MyCurrency } from './views/my-currency';
 import './index.css';
 
 class App extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			isLoggedIn: localStorage.getItem('email')
+		};
+	}
+
+
 	componentDidMount() {
 		$('#sideNavButton').sideNav();
 		$('#loginModal').modal();
 		$('#signUpModal').modal();
 	}
 
+	logIn = () => {
+		this.setState({isLoggedIn: true});
+	};
+
+	logOut = () => {
+		this.setState({isLoggedIn: null});
+		localStorage.setItem('email', null);
+		toast('Logged out', 3000);
+	};
+
 	render() {
 		return (
 			<Router>
 				<div>
-					<Login />
-					<SignUp />
-					<SideNav />
+					<Login logIn={this.logIn} />
+					<SignUp logIn={this.logIn} />
+					<SideNav isLoggedIn={this.state.isLoggedIn} />
 					<nav className="nav-extended">
 						<div className="nav-wrapper">
 							<div className="nav-left">
 								<a href="#" data-activates="side-nav" id="sideNavButton"><i className="fas fa-bars"></i></a>
 								<div className='brand-logo'><Link to="/"><img className="spin" src="img/bitcoin.png"/></Link></div>
 							</div>
-							<ul id="nav-mobile" className="right">
-								<li><a id='loginModalTrigger' className='modal-trigger' onClick={() => $('#loginModal').modal('open')}>Login</a></li>
-								<li><a id='signUpModalTrigger' className='modal-trigger' onClick={() => $('#signUpModal').modal('open')}>Sign Up</a></li>
-							</ul>
+							{this.state.isLoggedIn ? (
+								<ul id="nav-mobile" className="right">
+									<li><a id='logOut' onClick={this.logOut}>Log Out</a></li>
+								</ul>
+							) : (
+								<ul id="nav-mobile" className="right">
+									<li><a id='loginModalTrigger' className='modal-trigger' onClick={() => $('#loginModal').modal('open')}>Login</a></li>
+									<li><a id='signUpModalTrigger' className='modal-trigger' onClick={() => $('#signUpModal').modal('open')}>Sign Up</a></li>
+								</ul>
+							)}
 						</div>
 					</nav>
 					<div className="main">
