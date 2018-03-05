@@ -1,5 +1,5 @@
 import React from 'react';
-import { SampleGraph } from '../components/sample-graph';
+import { Graph } from '../components/graph';
 
 export class Home extends React.Component {
 	render() {
@@ -8,7 +8,7 @@ export class Home extends React.Component {
 				<h1>MonUs</h1>
 				<h2 className="no-margin">Your cryptocurrency monitor</h2>
 				<div className='chart-container row'>
-					<SampleGraph />
+					<Graph limit="10" unit="minute" />
 				</div>
 				<div className="row">
 					<h3>Monitor Your Cryptocurrency!</h3>

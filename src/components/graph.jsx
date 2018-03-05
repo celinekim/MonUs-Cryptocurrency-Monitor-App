@@ -3,7 +3,12 @@ import Chart from "chart.js";
 import $ from "jquery";
 import Request from 'request';
 
-export class SampleGraph extends React.Component {
+export class Graph extends React.Component {
+
+	componentWillReceiveProps(nextProps) {
+		this.props = nextProps;
+		this.loadData(this.chart);
+	}
 	updateData(chart) {
 		chart.data.labels.push(Date.now());
 		let option = {
@@ -31,7 +36,7 @@ export class SampleGraph extends React.Component {
 
 	loadCurrencyData(chart, currency, tNow) {
 		let option = {
-			'url': `https://min-api.cryptocompare.com/data/histominute?fsym=${currency}&tsym=USD&limit=10&toTs=${tNow}`,
+			'url': `https://min-api.cryptocompare.com/data/histo${this.props.unit}?fsym=${currency}&tsym=${this.props.currency || 'USD'}&limit=${this.props.limit | 10}&toTs=${tNow}`,
 			'json': true
 		};
 		Request.get(option, (error, response, body) => {
@@ -41,14 +46,15 @@ export class SampleGraph extends React.Component {
 				if (body.Type < 100) {
 					this.loadCurrencyData(chart, currency, tNow);
 				} else {
-					let labels = [];
+					let labels = [], datapoints = [];
 					// Add field symbol into data for identification
+					body.Data.forEach(function (entry) {
+						labels.push(entry.time * 1000);
+						datapoints.push(entry.close);
+					});
 					chart.data.datasets.forEach((dataset) => {
 						if (dataset.label === currency) {
-							body.Data.forEach(function (entry) {
-								labels.push(entry.time * 1000);
-								dataset.data.push(entry.close);
-							});
+							dataset.data = datapoints;
 						}
 					});
 					chart.data.labels = labels;
@@ -60,7 +66,7 @@ export class SampleGraph extends React.Component {
 
 	componentDidMount() {
 		let graph = $("#sampleGraph");
-		let chart = new Chart(graph, {
+		this.chart = new Chart(graph, {
 			type: 'line',
 			data: {
 				label: [],
@@ -131,9 +137,9 @@ export class SampleGraph extends React.Component {
 				maintainAspectRatio: false
 			}
 		});
-		this.loadData(chart);
+		this.loadData(this.chart);
 		setInterval(() => {
-			this.updateData(chart);
+			this.updateData(this.chart);
 		}, 30000);
 	}
 
