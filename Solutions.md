@@ -1,3 +1,5 @@
+The end user for our application is someone who has an interest in cryptocurrency. 
+
 Features of our web application:
 
 1. Login 
@@ -15,5 +17,3 @@ These graphs, updated every 30 seconds, display current and historical data for 
 4. Meet the team
 
 Users can learn more about the team behind the application and check out their GitHub and LinkedIn profiles.  
-
-The end user for our application is someone who has an interest in cryptocurrency. 
