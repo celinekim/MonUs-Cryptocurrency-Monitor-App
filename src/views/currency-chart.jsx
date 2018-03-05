@@ -1,7 +1,7 @@
 import React from 'react';
 import { Graph } from '../components/graph';
 import $ from 'jquery';
-import { SampleSummary } from '../components/sample-summary';
+import { Summary } from '../components/summary';
 
 
 export class CurrencyChart extends React.Component {
@@ -39,6 +39,10 @@ export class CurrencyChart extends React.Component {
 	changeCurrency2 = (event) => {
 		this.setState({currency2: event.target.value});
 		localStorage.setItem('currency2', event.target.value);
+	};
+
+	priceUpdate = (data) => {
+		this.setState({priceData: data});
 	};
 
 	render() {
@@ -86,8 +90,9 @@ export class CurrencyChart extends React.Component {
 				</div>
 
 				<div className='chart-container'>
-					<Graph unit={this.state.unit} limit={this.state.limit} currency={[this.state.currency1, this.state.currency2]} />
-				</div>{/*<SampleSummary />*/}
+					<Graph unit={this.state.unit} limit={this.state.limit} currency={[this.state.currency1, this.state.currency2]} update={this.priceUpdate}/>
+				</div>
+				<Summary priceData={this.state.priceData}/>
 			</div>
 		)
 	}

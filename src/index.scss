@@ -393,11 +393,9 @@ nav {
 
 .spin {
 	cursor: pointer;
-	&:hover {
-		-webkit-animation: spinAround 3.5s linear infinite;
-		-moz-animation: spinAround 3.5s linear infinite;
-		animation: spinAround 3.5s linear infinite;
-	}
+	-webkit-animation: spinAround 5s linear infinite;
+	-moz-animation: spinAround 5s linear infinite;
+	animation: spinAround 5s linear infinite;
 	@-webkit-keyframes spinAround {
 		from { -webkit-transform: rotate(0deg) }
 		to { -webkit-transform: rotate(360deg) }

@@ -16,26 +16,27 @@ export class Graph extends React.Component {
 	}
 
 	updateData(updateChart) {
-		if (this.props.unit === 'minute') {
-			this.chart.data.labels.push(Date.now());
-			let option = {
-				'url': `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${currencies.join()}&tsyms=${this.props.targetCurrency || 'USD'}`,
-				'json': true
-			};
-			Request.get(option, (error, response, body) => {
-				if (error) {
-					console.log(error);
-				} else {
-					if (updateChart) {
-						console.log("wtf");
-						this.chart.data.datasets.forEach((dataset) => {
-							dataset.data.push(body[dataset.label].USD);
-						});
-						this.chart.update();
-					}
+		this.chart.data.labels.push(Date.now());
+		let option = {
+			'url': `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${currencies.join()}&tsyms=${this.props.targetCurrency || 'USD'}`,
+			'json': true
+		};
+		Request.get(option, (error, response, body) => {
+			if (error) {
+				console.log(error);
+			} else {
+				if (this.props.unit === 'minute' && updateChart) {
+					this.chart.data.datasets.forEach((dataset) => {
+						dataset.data.push(body[dataset.label].USD);
+					});
+					this.chart.update();
 				}
-			});
-		}
+				if (this.props.update) {
+					console.log(body);
+					this.props.update(body);
+				}
+			}
+		});
 	}
 
 	loadData() {
