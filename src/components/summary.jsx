@@ -51,7 +51,7 @@ export class Summary extends React.Component {
 							<td>{this.props.priceData ? (this.props.priceData[symbol].USD * (this.state.assets[symbol] || 0)).toPrecision(7) : 'N/A'}</td>
 							<td className="flex-row">
 								<input ref={symbol} type="number"/>
-								<a onClick={() => {
+								<button className="waves-effect waves-teal btn-flat" onClick={() => {
 									if (parseFloat(this.refs[symbol].value) > 0) {
 										if (this.transaction(symbol, parseFloat(this.refs[symbol].value))) {
 											toast(`Bought ${this.refs[symbol].value} ${symbol}`, 3000)
@@ -59,8 +59,8 @@ export class Summary extends React.Component {
 											toast(`Not sufficient funds!`, 3000)
 										}
 									}
-								}}>Buy</a>
-								<a onClick={() => {
+								}}>Buy</button>
+								<button className="waves-effect waves-teal btn-flat"  onClick={() => {
 									if (parseFloat(this.refs[symbol].value) > 0) {
 										if (this.transaction(symbol, -parseFloat(this.refs[symbol].value))) {
 											toast(`Sold ${this.refs[symbol].value} ${symbol}`, 3000)
@@ -68,21 +68,21 @@ export class Summary extends React.Component {
 											toast(`Not sufficient ${symbol}!`, 3000)
 										}
 									}
-								}}>Sell</a>
-								<a className="hide-on-small-only" onClick={() => {
+								}}>Sell</button>
+								<button className="waves-effect waves-teal btn-flat hide-on-small-only" onClick={() => {
 									let amount = this.state.assets.USD / this.props.priceData[symbol].USD;
 									if (amount > 0) {
 										this.transaction(symbol, amount);
 										toast(`Bought ${amount} ${symbol}`, 3000)
 									}
-								}}>Buy All</a>
-								<a className="hide-on-small-only" onClick={() => {
+								}}>Buy All</button>
+								<button className="waves-effect waves-teal btn-flat hide-on-small-only" onClick={() => {
 									let amount = this.state.assets[symbol];
 									if (amount > 0) {
 										this.transaction(symbol, -amount);
 										toast(`Sold ${amount} ${symbol}`, 3000)
 									}
-								}}>Sell All</a>
+								}}>Sell All</button>
 							</td>
 						</tr>
 					))}
