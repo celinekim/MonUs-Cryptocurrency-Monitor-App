@@ -506,16 +506,3 @@ nav {
 table.highlight>tbody>tr:hover {
 	background-color: #333;
 }
-
-
-table .hide-on-responsive {
-	@media only screen and (max-width: 992px) {
-		display: none;
-	}
-}
-
-table .hide-on-wide {
-	@media only screen and (min-width: 993px) {
-		display: none;
-	}
-}

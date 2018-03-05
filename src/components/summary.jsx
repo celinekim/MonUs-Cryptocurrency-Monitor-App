@@ -37,9 +37,9 @@ export class Summary extends React.Component {
 					<th>Price</th>
 					<th>Quantity</th>
 					<th>Value</th>
-					<th><span className="hide-on-wide">Trading</span><span className="hide-on-responsive">You have: ${this.state.assets.USD.toPrecision(7)}</span></th>
+					<th><span className="hide-on-large-only">Trading</span><span className="hide-on-med-and-down">You have: ${this.state.assets.USD.toPrecision(7)}</span></th>
 				</tr>
-				<p className="hide-on-wide">You have:<br/>${this.state.assets.USD.toPrecision(7)}</p>
+				<p className="hide-on-large-only">You have:<br/>${this.state.assets.USD.toPrecision(7)}</p>
 				</thead>
 
 				<tbody>
