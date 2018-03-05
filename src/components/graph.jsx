@@ -99,9 +99,6 @@ export class Graph extends React.Component {
 					xAxes: [
 						{
 							type: 'time',
-							time: {
-								unit: this.props.unit,
-							}
 						}
 					],
 					yAxes: [
