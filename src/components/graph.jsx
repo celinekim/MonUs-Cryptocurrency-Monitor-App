@@ -3,41 +3,52 @@ import Chart from "chart.js";
 import $ from "jquery";
 import Request from 'request';
 
+import * as Currency from '../const/currency';
+
+
 export class Graph extends React.Component {
 
 	componentWillReceiveProps(nextProps) {
 		this.props = nextProps;
+		for (let i in this.props.currency) {
+			this.chart.data.datasets[i].label = this.props.currency[i];
+		}
 		this.loadData(this.chart);
 	}
 
-	updateData(chart) {
-		chart.data.labels.push(Date.now());
+	updateData(updateChart) {
+		this.chart.data.labels.push(Date.now());
 		let option = {
-			'url': 'https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=USD',
+			'url': `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${Currency.list.join()}&tsyms=${this.props.targetCurrency || 'USD'}`,
 			'json': true
 		};
 		Request.get(option, (error, response, body) => {
 			if (error) {
 				console.log(error);
 			} else {
-				chart.data.datasets.forEach((dataset) => {
-					dataset.data.push(body[dataset.label].USD);
-				});
-				chart.update();
+				if (this.props.unit === 'minute' && updateChart) {
+					this.chart.data.datasets.forEach((dataset) => {
+						dataset.data.push(body[dataset.label].USD);
+					});
+					this.chart.update();
+				}
+				if (this.props.update) {
+					this.props.update(body);
+				}
 			}
 		});
 	}
 
-	loadData(chart) {
+	loadData() {
 		let tNow = Math.floor(Date.now() / 1000);
-		['BTC', 'ETH'].forEach((currency) => {
-			this.loadCurrencyData(chart, currency, tNow);
+		this.props.currency.forEach((currency) => {
+			this.loadCurrencyData(currency, tNow);
 		})
 	}
 
-	loadCurrencyData(chart, currency, tNow) {
+	loadCurrencyData(currency, tNow) {
 		let option = {
-			'url': `https://min-api.cryptocompare.com/data/histo${this.props.unit}?fsym=${currency}&tsym=${this.props.currency || 'USD'}&limit=${this.props.limit | 10}&toTs=${tNow}`,
+			'url': `https://min-api.cryptocompare.com/data/histo${this.props.unit}?fsym=${currency}&tsym=${this.props.targetCurrency || 'USD'}&limit=${this.props.limit | 10}&toTs=${tNow}`,
 			'json': true
 		};
 		Request.get(option, (error, response, body) => {
@@ -45,7 +56,7 @@ export class Graph extends React.Component {
 				console.log(error);
 			} else {
 				if (body.Type < 100) {
-					this.loadCurrencyData(chart, currency, tNow);
+					this.loadCurrencyData(currency, tNow);
 				} else {
 					let labels = [], datapoints = [];
 					// Add field symbol into data for identification
@@ -53,20 +64,20 @@ export class Graph extends React.Component {
 						labels.push(entry.time * 1000);
 						datapoints.push(entry.close);
 					});
-					chart.data.datasets.forEach((dataset) => {
+					this.chart.data.datasets.forEach((dataset) => {
 						if (dataset.label === currency) {
 							dataset.data = datapoints;
 						}
 					});
-					chart.data.labels = labels;
-					chart.update();
+					this.chart.data.labels = labels;
+					this.chart.update();
 				}
 			}
 		});
 	}
 
 	componentDidMount() {
-		let graph = $("#sampleGraph");
+		let graph = $("#graph");
 		this.chart = new Chart(graph, {
 			type: 'line',
 			data: {
@@ -74,15 +85,15 @@ export class Graph extends React.Component {
 				datasets: [
 					{
 						data: [],
-						yAxisID: 'BTC',
-						label: "BTC",
+						yAxisID: 'left',
+						label: this.props.currency[0],
 						borderColor: "rgb(247, 147, 26)",
 						fill: false
 					},
 					{
 						data: [],
-						yAxisID: 'ETH',
-						label: "ETH",
+						yAxisID: 'right',
+						label: this.props.currency[1],
 						borderColor: "rgb(3, 169, 244)",
 						fill: false
 					}
@@ -91,27 +102,25 @@ export class Graph extends React.Component {
 			options: {
 				title: {
 					display: true,
-					text: '(updates every 30s)',
+					text: this.props.title || '',
 					position: 'bottom',
-					fontColor: '#aaa'
+					fontColor: '#ddd',
+					fontStyle: 500
 				},
 				scales: {
 					xAxes: [
 						{
 							type: 'time',
-							time: {
-								unit: 'minute',
-								displayFormats: {
-									'minute': 'h:mm a'
-								}
+							ticks: {
+								fontColor: '#ddd'
 							}
 						}
 					],
 					yAxes: [
 						{
-							id: 'BTC',
+							id: 'left',
 							scaleLabel: {
-								labelString: 'USD/BTC',
+								labelString: 'USD',
 								display: true,
 								fontColor: "rgb(247, 147, 26)"
 							},
@@ -122,9 +131,9 @@ export class Graph extends React.Component {
 							}
 						},
 						{
-							id: 'ETH',
+							id: 'right',
 							scaleLabel: {
-								labelString: 'USD/ETH',
+								labelString: 'USD',
 								display: true,
 								fontColor: "rgb(3, 169, 244)"
 							},
@@ -140,13 +149,14 @@ export class Graph extends React.Component {
 				maintainAspectRatio: false
 			}
 		});
-		this.loadData(this.chart);
+		this.loadData();
+		this.updateData();
 		setInterval(() => {
-			this.updateData(this.chart);
+			this.updateData(true);
 		}, 30000);
 	}
 
 	render() {
-		return <canvas id="sampleGraph"></canvas>
+		return <canvas id="graph"></canvas>
 	}
 }

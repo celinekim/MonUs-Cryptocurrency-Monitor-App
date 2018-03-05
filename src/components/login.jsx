@@ -2,6 +2,7 @@ import React from 'react';
 import $ from "jquery";
 import { toast } from 'materialize-css';
 
+
 export class Login extends React.Component {
 	close = () => {
 		$('#loginModal').modal('close');

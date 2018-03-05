@@ -24,7 +24,7 @@ export class SideNav extends React.Component {
 				</li>
 				<li><Link to="/" onClick={() => $('#sideNavButton').sideNav('hide')}><i className="fas fa-home"></i> Home</Link></li>
 				<li><Link to="/team" onClick={() => $('#sideNavButton').sideNav('hide')}><i className="fas fa-users"></i> Team</Link></li>
-				<li><Link to="/my-currency" onClick={() => $('#sideNavButton').sideNav('hide')}><i className="fas fa-chart-line"></i> My Cryptocurrencies</Link></li>
+				<li><Link to="/my-currency" onClick={() => $('#sideNavButton').sideNav('hide')}><i className="fas fa-chart-line"></i> {this.props.isLoggedIn ? "My Cryptocurrencies" : "Cryptocurrencies"}</Link></li>
 			</ul>
 		)
 	}
