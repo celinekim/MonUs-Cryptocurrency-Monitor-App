@@ -1,5 +1,5 @@
 import React from 'react';
-import { SampleGraph } from '../components/sample-graph.jsx';
+import { SampleGraph } from '../components/sample-graph';
 
 export class Home extends React.Component {
 	render() {
@@ -25,7 +25,7 @@ export class Home extends React.Component {
 						<li>EOS (EOS)</li>
 						<li>NEM (XEM)</li>
 					</ul>
-					We incorporate real-time graphs that display current and historical data for cryptocurrencies. You can create an account to follow your favourite cryptocurrencies and perform mock trading, in which you will receive $5000 USD once you create an account. Each graph updates every few seconds.
+					We incorporate real-time graphs that display current and historical data for cryptocurrencies. You can create an account to follow your favourite cryptocurrencies and perform mock trading, in which you will receive $5000 USD once you create an account. 
 					</p>
 				</div>
 			</div>

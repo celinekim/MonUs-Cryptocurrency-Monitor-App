@@ -4,12 +4,12 @@ import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import $ from 'jquery';
 import {sideNav} from 'materialize-css';
 
-import { Home } from './views/home.jsx';
-import { Team } from './views/team.jsx';
-import { Login } from './components/login.jsx';
-import { SignUp } from './components/sign-up.jsx';
-import { SideNav } from './components/side-nav.jsx';
-import { MainGraph } from './views/main-graph.jsx';
+import { Home } from './views/home';
+import { Team } from './views/team';
+import { Login } from './components/login';
+import { SignUp } from './components/sign-up';
+import { SideNav } from './components/side-nav';
+import { MainGraph } from './views/main-graph';
 
 import './index.css';
 
