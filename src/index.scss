@@ -19,6 +19,8 @@ body {
 	min-height: 100vh;
 	flex-direction: column;
 	overflow: auto !important;
+	width: 100%;
+	max-width: 100vw;
 }
 
 h1 {
@@ -417,5 +419,21 @@ nav {
 		display: inline-block;
 		width: 400px;
 		padding-left: 50px;
+	}
+}
+
+.login-form,
+.sign-up-form {
+	.modal-title-container {
+		display: flex;
+
+		.brand-logo {
+			margin-right: 15px;
+		}
+
+		.modal-title {
+			line-height: 64px;
+			color: #343434;
+		}
 	}
 }

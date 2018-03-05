@@ -5,7 +5,10 @@ export const SignUp = () =>
 	<div id='signUpModal' className='modal'>
 		<form className='sign-up-form'>
 			<div className='modal-content'>
-				<h3>Sign Up</h3>
+				<div className="modal-title-container col s12">
+					<img className="brand-logo" src="/img/bitcoin.png" height="64px" />
+					<h3 className="modal-title">Sign Up</h3>
+				</div>
 				<div className="input-field col s12">
 					<input id="signUpFirstname" type="text" className="validate" />
 					<label for="signUpFirstname">First Name</label>
