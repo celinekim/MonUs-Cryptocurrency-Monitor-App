@@ -33,7 +33,7 @@ export class Summary extends React.Component {
 			<table className="highlight responsive-table">
 				<thead>
 				<tr>
-					<th>name</th>
+					<th>Currency</th>
 					<th>Price</th>
 					<th>Quantity</th>
 					<th>Value</th>
