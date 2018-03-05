@@ -495,6 +495,10 @@ nav {
 		color: #dddddd;
 	}
 	input {
+		&:focus{
+			box-shadow: 0 1px 0 0 lightgray !important;
+			border-bottom: 1px solid lightgray !important;
+		}
 		display: block;
 		@media only screen and (min-width: 993px) {
 			max-width: 180px;
