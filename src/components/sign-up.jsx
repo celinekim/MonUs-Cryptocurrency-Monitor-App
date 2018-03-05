@@ -2,6 +2,7 @@ import React from 'react';
 import $ from "jquery";
 import {toast} from "materialize-css";
 
+
 export class SignUp extends React.Component {
 	close = () => {
 		$('#signUpModal').modal('close');

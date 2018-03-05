@@ -1,7 +1,9 @@
 import React from 'react';
+
 import { Graph } from '../components/graph';
 
-export class Home extends React.Component {
+
+export class HomeView extends React.Component {
 	render() {
 		return (
 			<div id="home" className="container-wrapper color-container-wrapper">

@@ -1,11 +1,12 @@
 import React from 'react';
-import { Graph } from '../components/graph';
 import $ from 'jquery';
+
+import { Graph } from '../components/graph';
 import { Summary } from '../components/summary';
-// import { }
+import * as Currency from '../const/currency';
 
 
-export class CurrencyChart extends React.Component {
+export class CurrencyView extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {unit: localStorage.getItem('unit') || 'day',
@@ -65,16 +66,9 @@ export class CurrencyChart extends React.Component {
 				</div>
 				<div className="graph-title secondary">
 					<select id="select-currency1" onChange={this.changeCurrency1} value={this.state.currency1}>
-						<option value="BTC">BTC</option>
-						<option value="ETH">ETH</option>
-						<option value="LTC">LTC</option>
-						<option value="XRP">XRP</option>
-						<option value="BCH">BCH</option>
-						<option value="EOS">EOS</option>
-						<option value="XEM">XEM</option>
-						<option value="NEO">NEO</option>
-						<option value="XLM">XLM</option>
-						<option value="ADA">ADA</option>
+						{Currency.list.map((symbol) => (
+							<option key={symbol} value={symbol}>{symbol}</option>
+						))}
 					</select>
 					<select id="select-currency2" onChange={this.changeCurrency2} value={this.state.currency2}>
 						<option value="BTC">BTC</option>

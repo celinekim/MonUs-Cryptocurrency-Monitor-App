@@ -1,5 +1,7 @@
 import React from "react";
+
 import * as Currency from '../const/currency';
+
 
 export class Summary extends React.Component {
 	constructor(props) {
@@ -24,8 +26,8 @@ export class Summary extends React.Component {
 				</thead>
 
 				<tbody>
-					{Currency.list.map((symbol, i) => (
-						<tr key={i}>
+					{Currency.list.map((symbol) => (
+						<tr key={symbol}>
 							<td>{symbol}</td>
 							<td>{this.props.priceData ? this.props.priceData[symbol].USD : 'N/A'}</td>
 							<td>{this.state.assets[symbol] || 0}</td>

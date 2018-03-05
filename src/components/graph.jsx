@@ -3,7 +3,8 @@ import Chart from "chart.js";
 import $ from "jquery";
 import Request from 'request';
 
-import * as Currency from '../const/currency'
+import * as Currency from '../const/currency';
+
 
 export class Graph extends React.Component {
 
