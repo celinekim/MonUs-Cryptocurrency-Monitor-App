@@ -30,15 +30,16 @@ export class Summary extends React.Component {
 
 	render() {
 		return (
-			<table className="highlight">
+			<table className="highlight responsive-table">
 				<thead>
 				<tr>
-					<th>Currency name</th>
-					<th>Current Price</th>
+					<th>name</th>
+					<th>Price</th>
 					<th>Quantity</th>
 					<th>Value</th>
-					<th className="hide-on-small-only">You have: ${this.state.assets.USD.toPrecision(7)}</th>
+					<th><span className="hide-on-wide">Trading</span><span className="hide-on-responsive">You have: ${this.state.assets.USD.toPrecision(7)}</span></th>
 				</tr>
+				<p className="hide-on-wide">You have:<br/>${this.state.assets.USD.toPrecision(7)}</p>
 				</thead>
 
 				<tbody>
@@ -48,8 +49,8 @@ export class Summary extends React.Component {
 							<td>{this.props.priceData ? this.props.priceData[symbol].USD : 'N/A'}</td>
 							<td>{(this.state.assets[symbol] || 0).toPrecision(7)}</td>
 							<td>{this.props.priceData ? (this.props.priceData[symbol].USD * (this.state.assets[symbol] || 0)).toPrecision(7) : 'N/A'}</td>
-							<td className="flex-row hide-on-small-and-down">
-								<input width="50%" ref={symbol} type="number"/>
+							<td className="flex-row">
+								<input ref={symbol} type="number"/>
 								<a onClick={() => {
 									if (parseFloat(this.refs[symbol].value) > 0) {
 										if (this.transaction(symbol, parseFloat(this.refs[symbol].value))) {
@@ -68,14 +69,14 @@ export class Summary extends React.Component {
 										}
 									}
 								}}>Sell</a>
-								<a onClick={() => {
+								<a className="hide-on-small-only" onClick={() => {
 									let amount = this.state.assets.USD / this.props.priceData[symbol].USD;
 									if (amount > 0) {
 										this.transaction(symbol, amount);
 										toast(`Bought ${amount} ${symbol}`, 3000)
 									}
 								}}>Buy All</a>
-								<a onClick={() => {
+								<a className="hide-on-small-only" onClick={() => {
 									let amount = this.state.assets[symbol];
 									if (amount > 0) {
 										this.transaction(symbol, -amount);
