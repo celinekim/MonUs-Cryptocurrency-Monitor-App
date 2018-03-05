@@ -1,5 +1,4 @@
 import React from 'react';
-import { SampleGraph } from '../components/sample-graph';
 import { DataDisplay } from '../components/data-display';
 
 export class Home extends React.Component {
@@ -8,7 +7,9 @@ export class Home extends React.Component {
 			<div id="home" className="container-wrapper color-container-wrapper">
 				<h1>MonUs</h1>
 				<h2 className="no-margin">Your cryptocurrency monitor</h2>
-				<DataDisplay isHome={true} />
+
+				<DataDisplay isHome={true} limit={10} unit='minute' />
+
 				<div className="row">
 					<h3>Monitor Your Cryptocurrency!</h3>
 					<p className="text-content">MonUs is your one-stop shop to get the latest on your favourite cryptocurrencies. We monitor the prices of the top ten currencies:</p>

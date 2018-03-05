@@ -2,7 +2,7 @@ import React from "react";
 import Request from 'request';
 
 import * as Const from '../const/currency';
-import { SampleGraph } from './sample-graph';
+import { Graph } from './graph';
 import { SampleSummary } from './sample-summary';
 
 export class DataDisplay extends React.Component {
@@ -93,14 +93,14 @@ export class DataDisplay extends React.Component {
 	}
 
 	render() {
-        const { isHome } = this.props;
+        const { isHome, unit, limit } = this.props;
         const { dataset, labels } = this.state;
 
         if (isHome) {
             return (
                 <div>
                     <div className='chart-container row'>
-                        <SampleGraph dataset={dataset} labels={labels} />
+                        <Graph dataset={dataset} labels={labels} limit={limit} unit={unit} />
                     </div>
                 </div>
             );
@@ -108,8 +108,10 @@ export class DataDisplay extends React.Component {
 
         return (
             <div>
+                <h1>Past {limit} {unit}s</h1>
                 <div className='chart-container row'>
-                    <SampleGraph dataset={dataset} labels={labels} />
+                    
+                    <Graph dataset={dataset} labels={labels} limit={limit} unit={unit} />
                 </div>
                 <SampleSummary dataset={dataset} labels={labels} />
             </div>
