@@ -1,4 +1,4 @@
-export const imageRoute = '/img/';
+export const imageRoute = 'img/';
 export const githubLink = 'https://github.com/';
 export const linkedinLink = 'https://www.linkedin.com/in/';
 
