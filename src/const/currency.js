@@ -1,15 +1,4 @@
-export const currencies = [
-    
-    {
-        symbol: 'ETH',
-        color: 'rgb(3, 169, 244)'
-    },
-    {
-        symbol: 'BTC',
-        color: 'rgb(247, 147, 26)'
-    }
-];
-
+export const currencies = ['BTC', 'ETH', 'LTC', 'XRP', 'BCH', 'EOS', 'XEM', 'NEO', 'XLM', 'ADA'];
 export const userAsset = [
     {
         symbol: 'ETH',

@@ -477,3 +477,16 @@ nav {
 		width: 100px;
 	}
 }
+
+.graph-title.secondary {
+	display: flex;
+	width: 100%;
+	.select-wrapper {
+		font-size: 0.6em;
+		margin: 0 auto;
+		>input {
+			height: 30px;
+			width: 60px;
+		}
+	}
+}

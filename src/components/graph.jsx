@@ -3,6 +3,8 @@ import Chart from "chart.js";
 import $ from "jquery";
 import Request from 'request';
 
+import { currencies } from '../const/currency'
+
 export class Graph extends React.Component {
 
 	componentWillReceiveProps(nextProps) {
@@ -13,21 +15,24 @@ export class Graph extends React.Component {
 		this.loadData(this.chart);
 	}
 
-	updateData() {
+	updateData(updateChart) {
 		if (this.props.unit === 'minute') {
 			this.chart.data.labels.push(Date.now());
 			let option = {
-				'url': `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${this.props.currency.join()}&tsyms=${this.props.targetCurrency || 'USD'}`,
+				'url': `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${currencies.join()}&tsyms=${this.props.targetCurrency || 'USD'}`,
 				'json': true
 			};
 			Request.get(option, (error, response, body) => {
 				if (error) {
 					console.log(error);
 				} else {
-					this.chart.data.datasets.forEach((dataset) => {
-						dataset.data.push(body[dataset.label].USD);
-					});
-					this.chart.update();
+					if (updateChart) {
+						console.log("wtf");
+						this.chart.data.datasets.forEach((dataset) => {
+							dataset.data.push(body[dataset.label].USD);
+						});
+						this.chart.update();
+					}
 				}
 			});
 		}
@@ -80,14 +85,14 @@ export class Graph extends React.Component {
 					{
 						data: [],
 						yAxisID: 'left',
-						label: "BTC",
+						label: this.props.currency[0],
 						borderColor: "rgb(247, 147, 26)",
 						fill: false
 					},
 					{
 						data: [],
 						yAxisID: 'right',
-						label: "ETH",
+						label: this.props.currency[1],
 						borderColor: "rgb(3, 169, 244)",
 						fill: false
 					}
@@ -96,7 +101,7 @@ export class Graph extends React.Component {
 			options: {
 				title: {
 					display: true,
-					text: '(updates every 30s)',
+					text: this.props.title || '',
 					position: 'bottom',
 					fontColor: '#aaa'
 				},
@@ -139,9 +144,10 @@ export class Graph extends React.Component {
 				maintainAspectRatio: false
 			}
 		});
-		this.loadData(this.chart);
+		this.loadData();
+		this.updateData();
 		setInterval(() => {
-			this.updateData(this.chart);
+			this.updateData(true);
 		}, 30000);
 	}
 

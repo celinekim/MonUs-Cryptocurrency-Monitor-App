@@ -9,7 +9,7 @@ export class Home extends React.Component {
 				<h2 className="no-margin text-shadow">Your cryptocurrency monitor</h2>
 
 				<div className='chart-container row'>
-					<Graph limit={10} unit='minute' currency={['BTC', 'ETH']} />
+					<Graph limit={10} unit='minute' currency={['BTC', 'ETH']} title="(Updates every 30s)" />
 				</div>
 
 				<div className="row">
