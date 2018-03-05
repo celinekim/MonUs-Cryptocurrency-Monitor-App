@@ -4,14 +4,15 @@ import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import $ from 'jquery';
 import { toast } from 'materialize-css';
 
-import { Home } from './views/home';
-import { Team } from './views/team';
+import { HomeView } from './views/home';
+import { TeamView } from './views/team';
 import { Login } from './components/login';
 import { SignUp } from './components/sign-up';
 import { SideNav } from './components/side-nav';
-import { CurrencyChart } from './views/currency-chart';
+import { CurrencyView } from './views/currency-chart';
 
 import './index.css';
+
 
 class App extends React.Component {
 	constructor(props) {
@@ -64,9 +65,9 @@ class App extends React.Component {
 					</nav>
 					<div className="main">
 						<Switch>
-							<Route path="/" exact component={Home} />
-							<Route path="/team" exact component={Team} />
-							<Route path="/my-currency" exact component={CurrencyChart} />
+							<Route path="/" exact component={HomeView} />
+							<Route path="/team" exact component={TeamView} />
+							<Route path="/my-currency" exact component={CurrencyView} />
 							<Route render={() =>
 								<div id="team" className="row">
 									<div className="content-container col s12">

@@ -1,11 +1,2 @@
-export const currencies = ['BTC', 'ETH', 'LTC', 'XRP', 'BCH', 'EOS', 'XEM', 'NEO', 'XLM', 'ADA'];
-export const userAsset = [
-    {
-        symbol: 'ETH',
-        amount: 10.3
-    },
-    {
-        symbol: 'BTC',
-        amount: 0.6
-    }
-]
+export const list = ['BTC', 'ETH', 'LTC', 'XRP', 'BCH', 'EOS', 'XEM', 'NEO', 'XLM', 'ADA'];
+export const defaultUserAsset = {'ETH': 10.3, 'BTC': 0.6};
