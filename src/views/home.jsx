@@ -1,68 +1,100 @@
 import React from 'react';
+import Request from 'request';
 import $ from 'jquery';
 import Chart from 'chart.js';
 
-function getRandomInt(max) {
-	return Math.floor(Math.random() * Math.floor(max));
-}
-
-function addData(chart, label) {
+function addData(chart) {
 	chart.data.labels.push(new Date());
-	chart.data.datasets.forEach((dataset) => {
-	    dataset.data.push(getRandomInt(10));
+	let option = {
+		'url': 'https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=USD',
+		'json': true
+	};
+	Request.get(option, function(error, response, body) {
+		if (error) {
+			console.log(error);
+		} else {
+			console.log(body);
+			chart.data.datasets.forEach((dataset) => {
+				dataset.data.push(body[dataset.label].USD);
+			});
+			chart.update();
+		}
 	});
-	chart.update();
+
 }
 
 export class Home extends React.Component {
-	render() {
-		var start = 0
-		$(document).ready(function() {
-			var graph =  $("#sampleGraph")
-			var chart = new Chart(graph, {
-				type: 'line',
-				data: {
-					label: new Date(),
-					datasets: [{ 
-						data: [getRandomInt(10)],
+	componentDidMount() {
+		let graph = $("#sampleGraph");
+		let chart = new Chart(graph, {
+			type: 'line',
+			data: {
+				label: [],
+				datasets: [
+					{
+						data: [],
+						yAxisID: 'BTC',
 						label: "BTC",
 						borderColor: "#f7931a",
 						fill: false
-						}, { 
-					data: [getRandomInt(10)],
+					},
+					{
+						data: [],
+						yAxisID: 'ETH',
 						label: "ETH",
 						borderColor: "#90A4AE",
 						fill: false
-					}, { 
-						data: [getRandomInt(10)],
-						label: "LTC",
-						borderColor: "#03A9F4",
-						fill: false
-					}]
+					}
+				]
+			},
+			options: {
+				title: {
+					display: true,
+					text: 'USD to Cryptocurrency'
 				},
-				options: {
-					title: {
-						display: true,
-						text: 'USD to Cryptocurrency'
-					},
-					scales: {
-						xAxes: [{
+				scales: {
+					xAxes: [
+						{
 							type: 'time',
 							time: {
 								displayFormats: {
-									'second': 'HH:MM:ss'
+									'second': 'h:mm:ss a'
 								}
 							}
-						}]
-					},
-					responsive: true,
-					maintainAspectRatio: false
-				}
-			})
-			setInterval(function() {
-				addData(chart)
-			}, 5000)
-		})
+						}
+					],
+					yAxes: [
+						{
+							id: 'BTC',
+							scaleLabel: {
+								labelString: '$/BTC',
+								display: true,
+							},
+							type: 'linear',
+							position: 'left'
+						},
+						{
+							id: 'ETH',
+							scaleLabel: {
+								labelString: '$/ETH',
+								display: true,
+							},
+							type: 'linear',
+							position: 'right'
+						}
+					]
+				},
+				responsive: true,
+				maintainAspectRatio: false
+			}
+		});
+		addData(chart);
+		setInterval(function () {
+			addData(chart);
+		}, 1000);
+	}
+
+	render() {
 		return (
 			<div id="home" class="container-wrapper color-container-wrapper">
 				<h1>MonUs</h1>
