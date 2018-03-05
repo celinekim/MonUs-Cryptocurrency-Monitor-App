@@ -1,5 +1,5 @@
 import React from 'react';
-import { SampleGraph } from '../components/sample-graph.jsx';
+import { SampleGraph } from '../components/sample-graph';
 
 export class Home extends React.Component {
 	render() {
