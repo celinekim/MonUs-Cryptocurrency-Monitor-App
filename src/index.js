@@ -9,7 +9,7 @@ import { TeamView } from './views/team';
 import { Login } from './components/login';
 import { SignUp } from './components/sign-up';
 import { SideNav } from './components/side-nav';
-import { CurrencyView } from './views/currency-chart';
+import { CurrencyView } from './views/currency';
 
 import './index.css';
 
