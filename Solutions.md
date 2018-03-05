@@ -28,4 +28,8 @@ Users can view historical data for cryptocurrencies of their choice starting fro
 
 7. Cryptocurrency table
 
-In the Cryptocurrencies page, below the graph is a table that displays the current price, quantity, and value of each cryptocurrency all in one place. Users can refer to this table if they want a summary of all the data.  
+In the Cryptocurrencies page, below the graph is a table that displays the current price, quantity, and value of each cryptocurrency all in one place. Users can refer to this table if they want a summary of all the data. This is where users can view how much USD they currently have, and it is updated every time users perform a mock trade.
+
+8. Mock trading
+
+Located in the table in the Cryptocurrencies page, users can buy and sell a cryptocurrency of their choice. There is a field where users can enter the amount of a cryptocurrency that they would like to buy or sell, and they can press the "Buy", "Sell", "Buy All", or "Sell All" buttons.  
