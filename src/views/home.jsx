@@ -5,7 +5,7 @@ export class Home extends React.Component {
 	render() {
 		return (
 			<div id="home" className="container-wrapper color-container-wrapper">
-				<h1>MonUs</h1>
+				<h1 class="text-shadow">MonUs</h1>
 				<h2 className="no-margin text-shadow">Your cryptocurrency monitor</h2>
 
 				<div className='chart-container row'>

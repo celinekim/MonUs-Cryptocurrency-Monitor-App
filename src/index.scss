@@ -27,9 +27,8 @@ h1 {
 	text-align: center;
 	font-size:2.3em;
 	color: #fff;
-	font-weight: 600;
+	font-weight: 500;
 	margin: 1.5rem auto 0.5rem;
-	text-shadow: rgba(255, 255, 255, 0.7) 0 1px 2px;
 }
 
 h2 {
@@ -37,7 +36,6 @@ h2 {
 	font-size: 1.8em;
 	color: #ddd;
 	font-weight: 300;
-	text-shadow: rgba(255, 255, 255, 0.5) 0 1px 1px;
 }
 
 h3 {
@@ -67,6 +65,10 @@ strong {
 
 .text-shadow {
 	text-shadow: rgba(0, 0, 0, 0.6) 0px 1px 2px;
+}
+
+.box-shadow {
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 }
 
 .main {
@@ -385,10 +387,6 @@ nav {
 			}
 		}
 	}
-	.select-wrapper {
-		width: 100%;
-		display: flex;
-	}
 }
 
 .spin {
@@ -412,7 +410,7 @@ nav {
 
 .chart-container {
 	position: relative;
-	margin: 0 auto;
+	margin: 1em auto;
 	min-height: 400px;
 }
 
@@ -445,6 +443,7 @@ nav {
 	display: block;
 	text-align: center;
 	width: max-content;
+	font-size: 1.8em;
 	>* {
 		display: inline-block;
 		margin: 0 7px;
@@ -454,18 +453,8 @@ nav {
 			color: darkgray;
 		}
 		>input {
-			color: #fff;
-			font-weight: 600;
-			font-size: 2.3em;
 			margin: 0;
-
-			text-shadow: rgba(255, 255, 255, 0.7) 0 1px 2px;
-		}
-		.dropdown-content {
-			background-color: $secondary-color;
-			li>span {
-				color: white;
-			}
+			font-size: 1em;
 		}
 	}
 	.select-unit >input{
@@ -479,6 +468,7 @@ nav {
 .graph-title.secondary {
 	display: flex;
 	width: 100%;
+	margin: 0 auto 1em;
 	.select-wrapper {
 		font-size: 0.6em;
 		margin: 0 auto;
@@ -486,5 +476,13 @@ nav {
 			height: 30px;
 			width: 60px;
 		}
+	}
+}
+
+.dropdown-content {
+	background-color: $secondary-color;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+	li>span {
+		color: white;
 	}
 }

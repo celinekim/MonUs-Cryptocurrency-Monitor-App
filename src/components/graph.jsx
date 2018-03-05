@@ -77,7 +77,7 @@ export class Graph extends React.Component {
 	}
 
 	componentDidMount() {
-		let graph = $("#sampleGraph");
+		let graph = $("#graph");
 		this.chart = new Chart(graph, {
 			type: 'line',
 			data: {
@@ -104,12 +104,16 @@ export class Graph extends React.Component {
 					display: true,
 					text: this.props.title || '',
 					position: 'bottom',
-					fontColor: '#aaa'
+					fontColor: '#ddd',
+					fontStyle: 500
 				},
 				scales: {
 					xAxes: [
 						{
 							type: 'time',
+							ticks: {
+								fontColor: '#ddd'
+							}
 						}
 					],
 					yAxes: [
@@ -153,6 +157,6 @@ export class Graph extends React.Component {
 	}
 
 	render() {
-		return <canvas id="sampleGraph"></canvas>
+		return <canvas id="graph"></canvas>
 	}
 }

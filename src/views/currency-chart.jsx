@@ -49,7 +49,7 @@ export class CurrencyChart extends React.Component {
 		return (
 			<div id="main-graph" className="container-wrapper color-container-wrapper">
 				<div className="graph-title">
-					<h1>Past</h1>
+					<p>Past</p>
 					<select className="select-limit" id="select-limit" onChange={this.changeLimit} value={this.state.limit}>
 						<option value="15">15</option>
 						<option value="30">30</option>
@@ -61,6 +61,11 @@ export class CurrencyChart extends React.Component {
 						<option value="hour">Hours</option>
 						<option value="day">Days</option>
 					</select>
+				</div>
+				
+
+				<div className='chart-container'>
+					<Graph unit={this.state.unit} limit={this.state.limit} currency={[this.state.currency1, this.state.currency2]} update={this.priceUpdate}/>
 				</div>
 				<div className="graph-title secondary">
 					<select id="select-currency1" onChange={this.changeCurrency1} value={this.state.currency1}>
@@ -87,10 +92,6 @@ export class CurrencyChart extends React.Component {
 						<option value="XLM">XLM</option>
 						<option value="ADA">ADA</option>
 					</select>
-				</div>
-
-				<div className='chart-container'>
-					<Graph unit={this.state.unit} limit={this.state.limit} currency={[this.state.currency1, this.state.currency2]} update={this.priceUpdate}/>
 				</div>
 				<Summary priceData={this.state.priceData}/>
 			</div>
