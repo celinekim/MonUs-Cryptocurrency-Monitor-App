@@ -1,19 +1,14 @@
 import React from "react";
-import { userAsset } from '../const/currency';
+import * as Currency from '../const/currency';
 
 export class Summary extends React.Component {
 	constructor(props) {
 		super(props);
-		// const temp = {};
-		// props.dataset.forEach(item => {
-		// 	if (item.data && item.data.length > 0) {
-		// 		temp[item.label] = item.data.slice(-1)[0];
-		// 	}
-		// });
 		this.state = {
-			assets: userAsset,
+			assets: JSON.parse(localStorage.getItem('assets')) || Currency.defaultUserAsset,
 			currencies: ['BTC', 'ETH'],
-		}
+		};
+		console.log(this.state.assets);
 	}
 
 	render() {
@@ -29,12 +24,12 @@ export class Summary extends React.Component {
 				</thead>
 
 				<tbody>
-					{this.state.assets.map((item, i) => (
+					{Currency.list.map((symbol, i) => (
 						<tr key={i}>
-							<td>{item.symbol}</td>
-							<td>{this.props.priceData ? this.props.priceData[item.symbol].USD : 'N/A'}</td>
-							<td>{item.amount}</td>
-							<td>{this.props.priceData ? (this.props.priceData[item.symbol].USD * item.amount).toPrecision(7) : 'N/A'}</td>
+							<td>{symbol}</td>
+							<td>{this.props.priceData ? this.props.priceData[symbol].USD : 'N/A'}</td>
+							<td>{this.state.assets[symbol] || 0}</td>
+							<td>{this.props.priceData ? (this.props.priceData[symbol].USD * (this.state.assets[symbol] || 0)).toPrecision(7) : 'N/A'}</td>
 						</tr>
 					))}
 				</tbody>

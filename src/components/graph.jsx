@@ -3,7 +3,7 @@ import Chart from "chart.js";
 import $ from "jquery";
 import Request from 'request';
 
-import { currencies } from '../const/currency'
+import * as Currency from '../const/currency'
 
 export class Graph extends React.Component {
 
@@ -18,7 +18,7 @@ export class Graph extends React.Component {
 	updateData(updateChart) {
 		this.chart.data.labels.push(Date.now());
 		let option = {
-			'url': `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${currencies.join()}&tsyms=${this.props.targetCurrency || 'USD'}`,
+			'url': `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${Currency.list.join()}&tsyms=${this.props.targetCurrency || 'USD'}`,
 			'json': true
 		};
 		Request.get(option, (error, response, body) => {
@@ -32,7 +32,6 @@ export class Graph extends React.Component {
 					this.chart.update();
 				}
 				if (this.props.update) {
-					console.log(body);
 					this.props.update(body);
 				}
 			}

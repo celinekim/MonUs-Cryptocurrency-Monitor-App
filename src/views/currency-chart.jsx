@@ -2,6 +2,7 @@ import React from 'react';
 import { Graph } from '../components/graph';
 import $ from 'jquery';
 import { Summary } from '../components/summary';
+// import { }
 
 
 export class CurrencyChart extends React.Component {
