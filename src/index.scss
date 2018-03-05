@@ -486,3 +486,17 @@ nav {
 		color: white;
 	}
 }
+.flex-row {
+	display: flex;
+	>* {
+		margin: 0 5px !important;
+	}
+	>a {
+		line-height: 43px;
+		cursor: pointer;
+		white-space: nowrap;
+	}
+}
+table.highlight>tbody>tr:hover {
+	background-color: #333;
+}
