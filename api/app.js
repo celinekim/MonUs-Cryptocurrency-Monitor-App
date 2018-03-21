@@ -5,6 +5,8 @@ const PORT = process.env.PORT || 8000;
 
 // Support Routes
 app.get('/', (req, res) => {
+  console.log(req);
+  res.send('hello world');
 });
 
 // RESTful Routes
@@ -20,7 +22,6 @@ app.post('/user/user', user.user_put); // Create new user
 app.get('/user/user/:id', user.user_get); // Get user info with username :id
 app.put('/user/user/:id', user.user_post); // Update user info with username :id
 app.del('/user/user/:id', user.user_del); // Delete user with username :id
-
 
 
 app.listen(PORT, () => {
