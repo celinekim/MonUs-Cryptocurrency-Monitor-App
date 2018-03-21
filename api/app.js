@@ -16,9 +16,9 @@ app.del('/user/session', user.session_del);
 app.put('/user/session', user.session_put);
 
 //CRUD for user management
-app.put('/user/user', user.user_put); // Create new user
+app.post('/user/user', user.user_put); // Create new user
 app.get('/user/user/:id', user.user_get); // Get user info with username :id
-app.post('/user/user/:id', user.user_post); // Update user info with username :id
+app.put('/user/user/:id', user.user_post); // Update user info with username :id
 app.del('/user/user/:id', user.user_del); // Delete user with username :id
 
 
