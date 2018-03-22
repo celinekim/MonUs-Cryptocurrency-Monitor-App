@@ -11,28 +11,31 @@ export class SignUp extends React.Component {
 
 	submit = () => {
 		if (this.refs.username.classList.contains('valid') &&
-				this.refs.password.classList.contains('valid')) {
-			let formData = {
-				username: this.refs.username.value,
-				password: this.refs.password.value,
-				firstName: this.refs.firstName.value,
-				lastName: this.refs.lastName.value,
-				email: this.refs.email.value,
-			};
-			Object.keys(formData).forEach((key) => (!formData[key]) && delete formData[key]);
+				this.refs.password.classList.contains('valid') &&
+				!this.refs.email.classList.contains('invalid')) {
+			const formData = {};
+			for (let i in this.refs) {
+				if (this.refs[i].value) {
+					formData[i] = this.refs[i].value;
+				}
+			}
 			let option = {
 				url: "http://localhost:8000/new_user",
 				json: formData
 			};
-			Request.post(option, (error, res, body) => {
-				if (res.statusCode === 409) {
+			Request.post(option, (err, res, body) => {
+				if (err) {
+					console.error(err);
+				} else if (res.statusCode === 409) {
 					toast(`Username ${this.refs.username.value} already exists!`, 3000);
+				} else if (res.statusCode === 500) {
+					toast(`Error!`, 3000);
 				} else {
-					localStorage.setItem('username', body.username);
-					localStorage.setItem('firstName', body.firstName);
-					localStorage.setItem('lastName', body.lastName);
-					localStorage.setItem('email', body.email);
-					localStorage.setItem('token', body.token);
+					for (let i in body) {
+						if (body[i]) {
+							localStorage.setItem(i, body[i]);
+						}
+					}
 					toast(`Logged in as ${body.username}`, 3000);
 					this.close();
 					this.props.logIn();

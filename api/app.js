@@ -8,7 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 
 app.use(bodyParser.json());
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	next();
@@ -26,9 +26,10 @@ app.post('/new_user', (req, res) => {
 		if (err) {
 			if (err.code === 11000) {
 				// Duplicate username
+				console.error("Username already exists!");
 				res.sendStatus(409);
 			} else {
-				throw err;
+				console.error(err);
 			}
 		} else {
 			delete req.body.password;
