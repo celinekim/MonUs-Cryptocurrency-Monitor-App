@@ -27,6 +27,8 @@ export class Login extends React.Component {
 					console.error(err);
 				} else if (res.statusCode === 401) {
 					toast(`Incorrect Password!`, 3000);
+				} else if (res.statusCode === 403) {
+					toast(`User does not exist!`, 3000);
 				} else if (res.statusCode === 500) {
 					toast(`Error!`, 3000);
 				} else {

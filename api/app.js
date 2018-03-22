@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 });
 
 
-const login = (res, prod) => {
+const startSession = (res, prod) => {
 	delete prod.password;
 
 	// Session
@@ -52,7 +52,7 @@ app.post('/signup', (req, res) => {
 				console.error(err);
 			}
 		} else {
-			login(res, prod.toObject());
+			startSession(res, prod.toObject());
 		}
 	});
 });
@@ -64,9 +64,12 @@ app.post('/login', (req, res) => {
 		if (err) {
 			console.error(err);
 		} else {
-			if (bcrypt.compareSync(req.body.password, prod.password)) {
+			if (!prod) {
+				console.error("User does not exist!");
+				res.sendStatus(403);
+			} else if (bcrypt.compareSync(req.body.password, prod.password)) {
 				console.log("Correct password!");
-				login(res, prod.toObject());
+				startSession(res, prod.toObject());
 			} else {
 				console.error("Wrong password!");
 				res.sendStatus(401);
