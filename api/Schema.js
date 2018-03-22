@@ -20,7 +20,8 @@ let userSchema = new Schema({
 		currencyID: {type: Schema.Types.ObjectId, ref: 'Crypto'},
 		amount: Number,
 	}],
-	balance: {type: Number, required: true, default: 5000 }
+	balance: {type: Number, required: true, default: 5000},
+	token: String
 });
 
 export const User = mongoose.model('User', userSchema);
