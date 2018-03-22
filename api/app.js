@@ -1,6 +1,8 @@
 const express = require('express');
 const schema = require('./schema');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
+const crypto = require("crypto");
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -17,9 +19,25 @@ app.use(function(req, res, next) {
 // User management
 // Create new user
 app.post('/new_user', (req, res) => {
+	console.log("Registering new user with data:");
+	req.body.password = bcrypt.hashSync(req.body.password, 10);
 	console.log(req.body);
-	res.send(req.body);
+	new schema.User(req.body).save((err) => {
+		if (err) {
+			if (err.code === 11000) {
+				// Duplicate username
+				res.sendStatus(409);
+			} else {
+				throw err;
+			}
+		} else {
+			delete req.body.password;
+			req.body.token = crypto.randomBytes(32).toString('hex');
+			res.send(req.body);
+		}
+	});
 });
+
 // Login
 app.post('/login', () => {
 

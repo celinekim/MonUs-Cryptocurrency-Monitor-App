@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from "jquery";
 import {toast} from "materialize-css";
+import Request from "request";
 
 
 export class SignUp extends React.Component {
@@ -11,12 +12,32 @@ export class SignUp extends React.Component {
 	submit = () => {
 		if (this.refs.username.classList.contains('valid') &&
 				this.refs.password.classList.contains('valid')) {
-			this.close();
-			localStorage.setItem('firstName', this.refs.firstName.value);
-			localStorage.setItem('lastName', this.refs.lastName.value);
-			localStorage.setItem('username', this.refs.username.value);
-			toast(`Logged in as ${localStorage.firstName} ${localStorage.lastName}`, 3000);
-			this.props.logIn();
+			let formData = {
+				username: this.refs.username.value,
+				password: this.refs.password.value,
+				firstName: this.refs.firstName.value,
+				lastName: this.refs.lastName.value,
+				email: this.refs.email.value,
+			};
+			Object.keys(formData).forEach((key) => (!formData[key]) && delete formData[key]);
+			let option = {
+				url: "http://localhost:8000/new_user",
+				json: formData
+			};
+			Request.post(option, (error, res, body) => {
+				if (res.statusCode === 409) {
+					toast(`Username ${this.refs.username.value} already exists!`, 3000);
+				} else {
+					localStorage.setItem('username', body.username);
+					localStorage.setItem('firstName', body.firstName);
+					localStorage.setItem('lastName', body.lastName);
+					localStorage.setItem('email', body.email);
+					localStorage.setItem('token', body.token);
+					toast(`Logged in as ${body.username}`, 3000);
+					this.close();
+					this.props.logIn();
+				}
+			});
 		}
 	};
 
@@ -29,7 +50,7 @@ export class SignUp extends React.Component {
 							<h3 className="modal-title">Sign Up</h3>
 						</div>
 						<div className="input-field col s12">
-							<input id="signUpUsername" type="text" ref="username" className="validate"/>
+							<input id="signUpUsername" type="text" ref="username" className="validate" required/>
 							<label htmlFor="signUpFirstname">Username</label>
 						</div>
 						<div className="input-field col s12">
@@ -41,11 +62,11 @@ export class SignUp extends React.Component {
 							<label htmlFor="signUpLastname">Last Name</label>
 						</div>
 						<div className="input-field col s12">
-							<input id="signUpEmail" type="email" ref="email"/>
+							<input id="signUpEmail" type="email" ref="email" className="validate"/>
 							<label htmlFor="signUpEmail">Email</label>
 						</div>
 						<div className="input-field col s12">
-							<input id="signUpPassword" type="password" ref="password" className="validate"/>
+							<input id="signUpPassword" type="password" ref="password" className="validate" required/>
 							<label htmlFor="signUpPassword">Password</label>
 						</div>
 					</div>
