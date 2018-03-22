@@ -19,18 +19,19 @@ const login = (res, prod) => {
 	delete prod.password;
 
 	// Session
-	Schema.Session.remove({userID: prod._id});
-	prod.token = crypto.randomBytes(32).toString('hex');
+	Schema.Session.remove({userID: prod._id}, () => {
+		prod.token = crypto.randomBytes(32).toString('hex');
 
-	new Schema.Session({
-		userID: prod._id,
-		sessionToken: prod.token
-	}).save((err) => {
-		if (err) {
-			console.error(err);
-		} else {
-			res.send(prod);
-		}
+		new Schema.Session({
+			userID: prod._id,
+			sessionToken: prod.token
+		}).save((err) => {
+			if (err) {
+				console.error(err);
+			} else {
+				res.send(prod);
+			}
+		});
 	});
 };
 // RESTful Routes
@@ -74,8 +75,19 @@ app.post('/login', (req, res) => {
 	});
 });
 // Logout
-app.post('/logout', () => {
-
+app.post('/logout', (req, res) => {
+	Schema.Session.remove(req.body, (err, prod) => {
+		if (err) {
+			console.error(err);
+		} else {
+			console.log(`Deleted ${prod.n} sessions from ${req.body.userID}`);
+			if (prod.n === 1) {
+				res.sendStatus(200);
+			} else {
+				res.sendStatus(202);
+			}
+		}
+	})
 });
 
 

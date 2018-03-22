@@ -12,13 +12,14 @@ import { SideNav } from './components/side-nav';
 import { CurrencyView } from './views/currency';
 
 import './index.css';
+import Request from "request";
 
 
 class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			isLoggedIn: localStorage.getItem('email')
+			isLoggedIn: localStorage.getItem('username')
 		};
 	}
 
@@ -34,8 +35,24 @@ class App extends React.Component {
 
 	logOut = () => {
 		this.setState({isLoggedIn: null});
+		Request.post({
+			url: "http://localhost:8000/logout",
+			json: {
+				userID: localStorage.getItem('_id'),
+				sessionToken: localStorage.getItem('token')
+			}
+		}, (err, res, body) => {
+			if (err) {
+				console.error(err);
+			} else {
+				if (res.statusCode === 200) {
+					toast('Safely logged out', 3000);
+				} else {
+					toast('Logged out', 3000);
+				}
+			}
+		});
 		localStorage.clear();
-		toast('Logged out', 3000);
 	};
 
 	render() {
