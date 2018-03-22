@@ -9,10 +9,10 @@ export class Login extends React.Component {
 	};
 
 	submit = () => {
-		if (this.refs.email.classList.contains('valid') &&
+		if (this.refs.username.classList.contains('valid') &&
 				this.refs.password.classList.contains('valid')) {
 			this.close();
-			localStorage.setItem('email', this.refs.email.value);
+			localStorage.setItem('username', this.refs.username.value);
 			toast(`Logged in as ${localStorage.email}`, 3000);
 			this.props.logIn();
 		}
@@ -27,8 +27,8 @@ export class Login extends React.Component {
 							<h3 className="modal-title">Login</h3>
 						</div>
 						<div className="input-field col s12">
-							<input id="loginEmail" type="email" ref="email" className="validate" />
-							<label htmlFor="loginEmail">Email</label>
+							<input id="loginEmail" type="text" ref="username" className="validate" />
+							<label htmlFor="loginEmail">Username</label>
 						</div>
 						<div className="input-field col s12">
 							<input id="loginPassword" type="password" ref="password" className="validate" />

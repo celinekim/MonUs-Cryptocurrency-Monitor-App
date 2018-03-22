@@ -9,14 +9,12 @@ export class SignUp extends React.Component {
 	};
 
 	submit = () => {
-		if (this.refs.firstName.classList.contains('valid') &&
-				this.refs.lastName.classList.contains('valid') &&
-				this.refs.email.classList.contains('valid') &&
+		if (this.refs.username.classList.contains('valid') &&
 				this.refs.password.classList.contains('valid')) {
 			this.close();
 			localStorage.setItem('firstName', this.refs.firstName.value);
 			localStorage.setItem('lastName', this.refs.lastName.value);
-			localStorage.setItem('email', this.refs.email.value);
+			localStorage.setItem('username', this.refs.username.value);
 			toast(`Logged in as ${localStorage.firstName} ${localStorage.lastName}`, 3000);
 			this.props.logIn();
 		}
@@ -31,15 +29,19 @@ export class SignUp extends React.Component {
 							<h3 className="modal-title">Sign Up</h3>
 						</div>
 						<div className="input-field col s12">
-							<input id="signUpFirstname" type="text" ref="firstName" className="validate"/>
+							<input id="signUpUsername" type="text" ref="username" className="validate"/>
+							<label htmlFor="signUpFirstname">Username</label>
+						</div>
+						<div className="input-field col s12">
+							<input id="signUpFirstname" type="text" ref="firstName"/>
 							<label htmlFor="signUpFirstname">First Name</label>
 						</div>
 						<div className="input-field col s12">
-							<input id="signUpLastname" type="text" ref="lastName" className="validate"/>
+							<input id="signUpLastname" type="text" ref="lastName"/>
 							<label htmlFor="signUpLastname">Last Name</label>
 						</div>
 						<div className="input-field col s12">
-							<input id="signUpEmail" type="email" ref="email" className="validate"/>
+							<input id="signUpEmail" type="email" ref="email"/>
 							<label htmlFor="signUpEmail">Email</label>
 						</div>
 						<div className="input-field col s12">
