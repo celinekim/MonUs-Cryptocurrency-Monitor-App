@@ -11,17 +11,30 @@ app.get('/', (req, res) => {
 
 // RESTful Routes
 
-// CRUD for session
-app.post('/user/session', user.session_post);
-app.get('/user/session', user.session_get);
-app.del('/user/session', user.session_del);
-app.put('/user/session', user.session_put);
+// User management
+// Create new user
+app.post('/user', () => {
 
-//CRUD for user management
-app.post('/user/user', user.user_put); // Create new user
-app.get('/user/user/:id', user.user_get); // Get user info with username :id
-app.put('/user/user/:id', user.user_post); // Update user info with username :id
-app.del('/user/user/:id', user.user_del); // Delete user with username :id
+});
+// Login
+app.post('/login', () => {
+
+});
+// Logout
+app.post('/logout', () => {
+
+});
+
+
+// Currency/Transaction
+// Get current wallet/balance
+app.get('/wallet', () => {
+
+});
+// Create a new transaction
+app.post('/transaction', () => {
+
+});
 
 
 app.listen(PORT, () => {
