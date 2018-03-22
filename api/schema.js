@@ -39,7 +39,7 @@ let sessionSchema = new Schema({
 
 
 
-mongoose.connect('mongodb://localhost/monus', (error) => {
+mongoose.connect('mongodb://aws.domh.ca/monus', (error) => {
 	if (error) {
 		console.log(error);
 	} else {
