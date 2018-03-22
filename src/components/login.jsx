@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from "jquery";
 import { toast } from 'materialize-css';
+import Request from "request";
 
 
 export class Login extends React.Component {
@@ -11,10 +12,34 @@ export class Login extends React.Component {
 	submit = () => {
 		if (this.refs.username.classList.contains('valid') &&
 				this.refs.password.classList.contains('valid')) {
-			this.close();
-			localStorage.setItem('username', this.refs.username.value);
-			toast(`Logged in as ${localStorage.email}`, 3000);
-			this.props.logIn();
+			const formData = {};
+			for (let i in this.refs) {
+				if (this.refs[i].value) {
+					formData[i] = this.refs[i].value;
+				}
+			}
+			let option = {
+				url: "http://localhost:8000/login",
+				json: formData
+			};
+			Request.post(option, (err, res, body) => {
+				if (err) {
+					console.error(err);
+				} else if (res.statusCode === 401) {
+					toast(`Incorrect Password!`, 3000);
+				} else if (res.statusCode === 500) {
+					toast(`Error!`, 3000);
+				} else {
+					for (let i in body) {
+						if (body[i]) {
+							localStorage.setItem(i, body[i]);
+						}
+					}
+					toast(`Logged in as ${body.username}`, 3000);
+					this.close();
+					this.props.logIn();
+				}
+			});
 		}
 	};
 
@@ -27,8 +52,8 @@ export class Login extends React.Component {
 							<h3 className="modal-title">Login</h3>
 						</div>
 						<div className="input-field col s12">
-							<input id="loginEmail" type="text" ref="username" className="validate" />
-							<label htmlFor="loginEmail">Username</label>
+							<input id="loginUsername" type="text" ref="username" className="validate" />
+							<label htmlFor="loginUsername">Username</label>
 						</div>
 						<div className="input-field col s12">
 							<input id="loginPassword" type="password" ref="password" className="validate" />

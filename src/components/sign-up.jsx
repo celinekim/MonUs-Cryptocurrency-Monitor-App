@@ -20,7 +20,7 @@ export class SignUp extends React.Component {
 				}
 			}
 			let option = {
-				url: "http://localhost:8000/new_user",
+				url: "http://localhost:8000/signup",
 				json: formData
 			};
 			Request.post(option, (err, res, body) => {

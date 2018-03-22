@@ -1,5 +1,5 @@
 const express = require('express');
-const schema = require('./schema');
+const Schema = require('./schema');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const crypto = require("crypto");
@@ -14,15 +14,34 @@ app.use((req, res, next) => {
 	next();
 });
 
+
+const login = (res, prod) => {
+	delete prod.password;
+
+	// Session
+	Schema.Session.remove({userID: prod._id});
+	prod.token = crypto.randomBytes(32).toString('hex');
+
+	new Schema.Session({
+		userID: prod._id,
+		sessionToken: prod.token
+	}).save((err) => {
+		if (err) {
+			console.error(err);
+		} else {
+			res.send(prod);
+		}
+	});
+};
 // RESTful Routes
 
 // User management
 // Create new user
-app.post('/new_user', (req, res) => {
+app.post('/signup', (req, res) => {
 	console.log("Registering new user with data:");
 	req.body.password = bcrypt.hashSync(req.body.password, 10);
 	console.log(req.body);
-	new schema.User(req.body).save((err) => {
+	new Schema.User(req.body).save((err, prod) => {
 		if (err) {
 			if (err.code === 11000) {
 				// Duplicate username
@@ -32,16 +51,27 @@ app.post('/new_user', (req, res) => {
 				console.error(err);
 			}
 		} else {
-			delete req.body.password;
-			req.body.token = crypto.randomBytes(32).toString('hex');
-			res.send(req.body);
+			login(res, prod.toObject());
 		}
 	});
 });
 
 // Login
-app.post('/login', () => {
-
+app.post('/login', (req, res) => {
+	console.log(`Logging in user ${req.body.username}`);
+	Schema.User.findOne({username: req.body.username}, (err, prod) => {
+		if (err) {
+			console.error(err);
+		} else {
+			if (bcrypt.compareSync(req.body.password, prod.password)) {
+				console.log("Correct password!");
+				login(res, prod.toObject());
+			} else {
+				console.error("Wrong password!");
+				res.sendStatus(401);
+			}
+		}
+	});
 });
 // Logout
 app.post('/logout', () => {
