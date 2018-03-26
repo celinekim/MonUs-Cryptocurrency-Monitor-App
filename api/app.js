@@ -15,34 +15,16 @@ app.use((req, res, next) => {
 });
 
 
-const startSession = (res, prod) => {
-	delete prod.password;
-
-	// Session
-	Schema.Session.remove({userID: prod._id}, () => {
-		prod.token = crypto.randomBytes(32).toString('hex');
-
-		new Schema.Session({
-			userID: prod._id,
-			sessionToken: prod.token
-		}).save((err) => {
-			if (err) {
-				console.error(err);
-			} else {
-				res.send(prod);
-			}
-		});
-	});
-};
 // RESTful Routes
 
 // User management
 // Create new user
 app.post('/signup', (req, res) => {
-	console.log("Registering new user with data:");
-	req.body.password = bcrypt.hashSync(req.body.password, 10);
-	console.log(req.body);
-	new Schema.User(req.body).save((err, prod) => {
+	console.log(`Registering new user with data:${req.body}`);
+	const user = JSON.parse(JSON.stringify(req.body));
+	user.password = bcrypt.hashSync(req.body.password, 10);
+	user.sessionToken = crypto.randomBytes(32).toString('hex');
+	new Schema.User(user).save((err, prod) => {
 		if (err) {
 			if (err.code === 11000) {
 				// Duplicate username
@@ -52,7 +34,9 @@ app.post('/signup', (req, res) => {
 				console.error(err);
 			}
 		} else {
-			startSession(res, prod.toObject());
+			const userData = JSON.parse(JSON.stringify(prod));
+			delete userData.password;
+			res.send(userData);
 		}
 	});
 });
@@ -60,16 +44,33 @@ app.post('/signup', (req, res) => {
 // Login
 app.post('/login', (req, res) => {
 	console.log(`Logging in user ${req.body.username}`);
-	Schema.User.findOne({username: req.body.username}, (err, prod) => {
+	const username = req.body.username;
+	const password = req.body.password;
+
+	Schema.User.findOne({username}, (err, prod) => {
 		if (err) {
 			console.error(err);
 		} else {
 			if (!prod) {
 				console.error("User does not exist!");
 				res.sendStatus(403);
-			} else if (bcrypt.compareSync(req.body.password, prod.password)) {
+			} else if (bcrypt.compareSync(password, prod.password)) {
 				console.log("Correct password!");
-				startSession(res, prod.toObject());
+				const userData = JSON.parse(JSON.stringify(prod));
+				delete userData.password;
+
+				userData.sessionToken = crypto.randomBytes(32).toString('hex');
+
+				Schema.User.findByIdAndUpdate(prod._id, { $set: { sessionToken: userData.sessionToken }},
+					(error) => {
+						if (error) {
+							console.error(err);
+						} else {
+							console.log('login', userData);
+							res.send(userData);
+						}
+					}
+				);
 			} else {
 				console.error("Wrong password!");
 				res.sendStatus(401);
@@ -77,20 +78,23 @@ app.post('/login', (req, res) => {
 		}
 	});
 });
+
 // Logout
 app.post('/logout', (req, res) => {
-	Schema.Session.remove(req.body, (err, prod) => {
-		if (err) {
-			console.error(err);
-		} else {
-			console.log(`Deleted ${prod.n} sessions from ${req.body.userID}`);
-			if (prod.n === 1) {
-				res.sendStatus(200);
+	Schema.User.findByIdAndUpdate(req.body.userID, {$unset: { sessionToken: "" } },
+		(err, prod) => {
+			if (err) {
+				console.error(err);
 			} else {
-				res.sendStatus(202);
+				console.log(`Deleted ${prod.n} sessions from ${req.body.userID}`);
+				if (prod.n === 1) {
+					res.sendStatus(200);
+				} else {
+					res.sendStatus(202);
+				}
 			}
 		}
-	})
+	);
 });
 
 
