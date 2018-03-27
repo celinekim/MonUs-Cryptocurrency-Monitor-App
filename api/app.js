@@ -21,7 +21,7 @@ app.use((req, res, next) => {
 // Create new user
 app.post('/signup', (req, res) => {
 	console.log(`Registering new user with data:${req.body}`);
-	const user = JSON.parse(JSON.stringify(req.body));
+	const user = req.body;
 	user.password = bcrypt.hashSync(req.body.password, 10);
 	user.sessionToken = crypto.randomBytes(32).toString('hex');
 	new Schema.User(user).save((err, prod) => {
@@ -34,7 +34,7 @@ app.post('/signup', (req, res) => {
 				console.error(err);
 			}
 		} else {
-			const userData = JSON.parse(JSON.stringify(prod));
+			const userData = prod.toObject();
 			delete userData.password;
 			res.send(userData);
 		}
@@ -56,7 +56,7 @@ app.post('/login', (req, res) => {
 				res.sendStatus(403);
 			} else if (bcrypt.compareSync(password, prod.password)) {
 				console.log("Correct password!");
-				const userData = JSON.parse(JSON.stringify(prod));
+				const userData = prod.toObject();
 				delete userData.password;
 
 				userData.sessionToken = crypto.randomBytes(32).toString('hex');
