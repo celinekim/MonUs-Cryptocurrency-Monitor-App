@@ -92,7 +92,7 @@ export class Summary extends React.Component {
 							<td>{(this.state.assets[symbol] || 0).toPrecision(7)}</td>
 							<td>{this.props.priceData ? (this.props.priceData[symbol].USD * (this.state.assets[symbol] || 0)).toPrecision(7) : 'N/A'}</td>
 							<td className="flex-row">
-								<input ref={symbol} type="number"/>
+								<input ref={symbol} type="number" defaultValue={0}/>
 								<button className="waves-effect waves-teal btn-flat" onClick={() => {
 									if (parseFloat(this.refs[symbol].value) > 0) {
 										this.transaction(symbol, parseFloat(this.refs[symbol].value));

@@ -86,7 +86,7 @@ class App extends React.Component {
 							<Route path="/team" exact component={TeamView} />
 							<Route path="/my-currency" exact render={()=><CurrencyView isLoggedIn={this.state.isLoggedIn}/>}/>
 							<Route render={() =>
-								<div id="team" className="row">
+								<div className="row">
 									<div className="content-container col s12">
 										<h2 className="text-title text-center">404 - Page not found</h2>
 									</div>
