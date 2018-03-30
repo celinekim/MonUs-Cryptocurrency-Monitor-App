@@ -24,7 +24,7 @@ let userSchema = new Schema({
 		ADA: {type: Number, default: 0}
 	},
 	transactions: [{
-		currencyID: {type: Schema.Types.ObjectId, ref: 'Crypto'},
+		currency: {type: String},
 		timestamp: {type: Date},
 		amount: {type: Number},
 		unitPrice: {type: Number}

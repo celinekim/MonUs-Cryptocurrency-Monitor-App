@@ -133,6 +133,12 @@ app.post('/transaction', (req, res) => {
 				if (USDAmount >= 0 && symbolAmount >= 0) {
 					prod.wallet.USD = USDAmount;
 					prod.wallet[req.body.symbol] = symbolAmount;
+					prod.transactions.push({
+						currency: req.body.symbol,
+						timestamp: Date.now(),
+						amount: req.body.amount,
+						unitPrice: body.USD
+					});
 					prod.save();
 					res.send({wallet: prod.wallet, amount: Math.abs(req.body.amount)});
 				} else {
