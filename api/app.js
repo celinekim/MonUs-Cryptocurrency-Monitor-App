@@ -3,6 +3,7 @@ const Schema = require('./schema');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const crypto = require("crypto");
+const request = require('request');
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -82,19 +83,18 @@ app.post('/login', (req, res) => {
 
 // Logout
 app.post('/logout', (req, res) => {
-	Schema.findOne(req.body,
-		(err, prod) => {
-			if (err) {
-				console.error(err);
-				res.sendStatus(500);
-			} else if (prod === null) {
-				res.sendStatus(202);
-			} else {
-				prod.set('sessionToken', null);
-				res.sendStatus(200);
-			}
+	Schema.findOne(req.body, (err, prod) => {
+		if (err) {
+			console.error(err);
+			res.sendStatus(500);
+		} else if (prod === null) {
+			res.sendStatus(202);
+		} else {
+			prod.set('sessionToken', null);
+			prod.save();
+			res.sendStatus(200);
 		}
-	);
+	});
 });
 
 
@@ -108,17 +108,39 @@ app.post('/wallet', (req, res) => {
 		} else if (prod === null) {
 			res.sendStatus(403);
 		} else {
-			let payload = {USD: prod.balance};
-			for (let i in prod.wallet) {
-				payload[prod.wallet[i].currency] = prod.wallet[i].amount;
-			}
-			res.send(payload);
+			res.send(prod.wallet);
 		}
 	});
 });
 // Create a new transaction
-app.post('/transaction', () => {
-
+app.post('/transaction', (req, res) => {
+	Schema.findOne(req.body.credentials, (err, prod) => {
+		if (err) {
+			console.error(err);
+			res.sendStatus(500);
+		} else if (prod === null) {
+			res.sendStatus(403);
+		} else {
+			request.post({
+				url: `https://min-api.cryptocompare.com/data/price?fsym=${req.body.symbol}&tsyms=USD`,
+				json: true
+			}, (err, response, body) => {
+				if (req.body.amount === 'MAX') {
+					req.body.amount = prod.wallet.USD / body.USD;
+				}
+				let USDAmount = prod.wallet.USD - body.USD * req.body.amount;
+				let symbolAmount = prod.wallet[req.body.symbol] + req.body.amount;
+				if (USDAmount >= 0 && symbolAmount >= 0) {
+					prod.wallet.USD = USDAmount;
+					prod.wallet[req.body.symbol] = symbolAmount;
+					prod.save();
+					res.send({wallet: prod.wallet, amount: Math.abs(req.body.amount)});
+				} else {
+					res.sendStatus(409);
+				}
+			});
+		}
+	});
 });
 
 

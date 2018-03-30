@@ -10,11 +10,19 @@ let userSchema = new Schema({
 	createdAt: {type: Date},
 	sessionToken: {type: String},
 	followingCurrencies: [{type: Schema.Types.ObjectId, ref: 'Crypto'}], // Array of cryptoID of following currencies,
-	wallet: [{
-		currency: {type: String},
-		amount: {type: Number},
-	}],
-	balance: {type: Number, required: true, default: 5000},
+	wallet: {
+		USD: {type: Number, default: 50000},
+		BTC: {type: Number, default: 0},
+		ETH: {type: Number, default: 0},
+		LTC: {type: Number, default: 0},
+		XRP: {type: Number, default: 0},
+		BCH: {type: Number, default: 0},
+		EOS: {type: Number, default: 0},
+		XEM: {type: Number, default: 0},
+		NEO: {type: Number, default: 0},
+		XLM: {type: Number, default: 0},
+		ADA: {type: Number, default: 0}
+	},
 	transactions: [{
 		currencyID: {type: Schema.Types.ObjectId, ref: 'Crypto'},
 		timestamp: {type: Date},

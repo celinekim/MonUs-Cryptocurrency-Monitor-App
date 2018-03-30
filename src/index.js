@@ -84,7 +84,7 @@ class App extends React.Component {
 						<Switch>
 							<Route path="/" exact component={HomeView} />
 							<Route path="/team" exact component={TeamView} />
-							<Route path="/my-currency" exact component={CurrencyView} />
+							<Route path="/my-currency" exact render={()=><CurrencyView isLoggedIn={this.state.isLoggedIn}/>}/>
 							<Route render={() =>
 								<div id="team" className="row">
 									<div className="content-container col s12">
