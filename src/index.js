@@ -38,8 +38,8 @@ class App extends React.Component {
 		Request.post({
 			url: "http://localhost:8000/logout",
 			json: {
-				userID: localStorage.getItem('_id'),
-				sessionToken: localStorage.getItem('token')
+				_id: localStorage.getItem('_id'),
+				sessionToken: localStorage.getItem('sessionToken')
 			}
 		}, (err, res, body) => {
 			if (err) {

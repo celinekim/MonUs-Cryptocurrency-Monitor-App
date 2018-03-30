@@ -15,19 +15,23 @@ export class Summary extends React.Component {
 	}
 
 	componentDidMount() {
-		Request.post({
-			url: "http://localhost:8000/wallet",
-			json: {
-				userID: localStorage.getItem('_id'),
-				sessionToken: localStorage.getItem('token')
-			}
-		}, (err, res, body) => {
-			if (err) {
-				console.error(err);
-			} else {
-				this.setState({assets: body});
-			}
-		});
+		if (localStorage.getItem('_id')) {
+			Request.post({
+				url: "http://localhost:8000/wallet",
+				json: {
+					_id: localStorage.getItem('_id'),
+					sessionToken: localStorage.getItem('sessionToken')
+				}
+			}, (err, res, body) => {
+				if (err) {
+					console.error(err);
+				} else {
+					if (res.statusCode === 200) {
+						this.setState({assets: body});
+					}
+				}
+			});
+		}
 	}
 
 	transaction = (symbol, amount) => {

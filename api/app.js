@@ -68,7 +68,6 @@ app.post('/login', (req, res) => {
 						if (error) {
 							console.error(err);
 						} else {
-							console.log('login', userData);
 							res.send(userData);
 						}
 					}
@@ -83,18 +82,16 @@ app.post('/login', (req, res) => {
 
 // Logout
 app.post('/logout', (req, res) => {
-	Schema.findByIdAndUpdate(req.body.userID, {$unset: { sessionToken: "" } },
+	Schema.findOne(req.body,
 		(err, prod) => {
 			if (err) {
 				console.error(err);
 				res.sendStatus(500);
+			} else if (prod === null) {
+				res.sendStatus(202);
 			} else {
-				console.log(`Deleted ${prod.n} sessions from ${req.body.userID}`);
-				if (prod.n === 1) {
-					res.sendStatus(200);
-				} else {
-					res.sendStatus(202);
-				}
+				prod.set('sessionToken', null);
+				res.sendStatus(200);
 			}
 		}
 	);
@@ -104,10 +101,12 @@ app.post('/logout', (req, res) => {
 // Currency/Transaction
 // Get current wallet/balance
 app.post('/wallet', (req, res) => {
-	Schema.findById(req.body.userID, (err, prod) => {
+	Schema.findOne(req.body, (err, prod) => {
 		if (err) {
 			console.error(err);
 			res.sendStatus(500);
+		} else if (prod === null) {
+			res.sendStatus(403);
 		} else {
 			let payload = {USD: prod.balance};
 			for (let i in prod.wallet) {
