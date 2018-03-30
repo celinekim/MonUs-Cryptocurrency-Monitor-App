@@ -46,10 +46,7 @@ app.post('/signup', (req, res) => {
 // Login
 app.post('/login', (req, res) => {
 	console.log(`Logging in user ${req.body.username}`);
-	const username = req.body.username;
-	const password = req.body.password;
-
-	Schema.findOne({username}, (err, prod) => {
+	Schema.findOne({username: req.body.username}, (err, prod) => {
 		if (err) {
 			console.error(err);
 			res.sendStatus(500);
@@ -57,22 +54,14 @@ app.post('/login', (req, res) => {
 			if (!prod) {
 				console.error("User does not exist!");
 				res.sendStatus(403);
-			} else if (bcrypt.compareSync(password, prod.password)) {
+			} else if (bcrypt.compareSync(req.body.password, prod.password)) {
 				console.log("Correct password!");
+				prod.set('sessionToken', crypto.randomBytes(32).toString('hex'));
+				prod.save();
+
 				const userData = prod.toObject();
 				delete userData.password;
-
-				userData.sessionToken = crypto.randomBytes(32).toString('hex');
-
-				Schema.findByIdAndUpdate(prod._id, { $set: { sessionToken: userData.sessionToken }},
-					(error) => {
-						if (error) {
-							console.error(err);
-						} else {
-							res.send(userData);
-						}
-					}
-				);
+				res.send(userData);
 			} else {
 				console.error("Wrong password!");
 				res.sendStatus(401);
