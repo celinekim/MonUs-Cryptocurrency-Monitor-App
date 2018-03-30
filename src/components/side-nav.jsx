@@ -16,10 +16,16 @@ export class SideNav extends React.Component {
 							<span className="white-text name"> </span>
 						)}
 						{this.props.isLoggedIn ? (
+							<span className="white-text">{localStorage.getItem('username')}</span>
+						) : (
+							<span className="white-text">Not logged in</span>
+						)}
+						{(this.props.isLoggedIn && localStorage.getItem('email')) ? (
 							<span className="white-text email">{localStorage.getItem('email')}</span>
 						) : (
-							<span className="white-text email">Not logged in</span>
+							<span className="white-text email"> </span>
 						)}
+
 					</div>
 				</li>
 				<li><Link to="/" onClick={() => $('#sideNavButton').sideNav('hide')}><i className="fas fa-home"></i> Home</Link></li>
