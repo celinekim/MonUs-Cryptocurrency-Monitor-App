@@ -1,13 +1,6 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
-
-let cryptoSchema = new Schema({
-	name: {type: String, required: true, unique: true },
-	symbol: {type: String, required: true, unique: true }
-});
-
-
 let userSchema = new Schema({
 	username: {type: String, required: true, unique: true },
 	password: {type: String, required: true},
@@ -18,7 +11,7 @@ let userSchema = new Schema({
 	sessionToken: {type: String},
 	followingCurrencies: [{type: Schema.Types.ObjectId, ref: 'Crypto'}], // Array of cryptoID of following currencies,
 	wallet: [{
-		currencyID: {type: Schema.Types.ObjectId, ref: 'Crypto'},
+		currency: {type: String},
 		amount: {type: Number},
 	}],
 	balance: {type: Number, required: true, default: 5000},
@@ -39,7 +32,4 @@ mongoose.connect('mongodb://domh.ca/monus', (error) => {
 	}
 });
 
-module.exports = {
-	Crypto: mongoose.model('Crypto', cryptoSchema),
-	User: mongoose.model('User', userSchema),
-};
+module.exports = mongoose.model('User', userSchema);

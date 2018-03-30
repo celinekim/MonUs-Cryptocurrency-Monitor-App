@@ -2,15 +2,32 @@ import React from "react";
 import { toast } from 'materialize-css';
 
 import * as Currency from '../const/currency';
+import Request from "request";
 
 
 export class Summary extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			assets: JSON.parse(localStorage.getItem('assets')) || Currency.defaultUserAsset,
+			assets: {USD: 0},
 			currencies: ['BTC', 'ETH'],
 		};
+	}
+
+	componentDidMount() {
+		Request.post({
+			url: "http://localhost:8000/wallet",
+			json: {
+				userID: localStorage.getItem('_id'),
+				sessionToken: localStorage.getItem('token')
+			}
+		}, (err, res, body) => {
+			if (err) {
+				console.error(err);
+			} else {
+				this.setState({assets: body});
+			}
+		});
 	}
 
 	transaction = (symbol, amount) => {

@@ -24,7 +24,7 @@ app.post('/signup', (req, res) => {
 	const user = req.body;
 	user.password = bcrypt.hashSync(req.body.password, 10);
 	user.sessionToken = crypto.randomBytes(32).toString('hex');
-	new Schema.User(user).save((err, prod) => {
+	new Schema(user).save((err, prod) => {
 		if (err) {
 			if (err.code === 11000) {
 				// Duplicate username
@@ -32,6 +32,7 @@ app.post('/signup', (req, res) => {
 				res.sendStatus(409);
 			} else {
 				console.error(err);
+				res.sendStatus(500);
 			}
 		} else {
 			const userData = prod.toObject();
@@ -47,9 +48,10 @@ app.post('/login', (req, res) => {
 	const username = req.body.username;
 	const password = req.body.password;
 
-	Schema.User.findOne({username}, (err, prod) => {
+	Schema.findOne({username}, (err, prod) => {
 		if (err) {
 			console.error(err);
+			res.sendStatus(500);
 		} else {
 			if (!prod) {
 				console.error("User does not exist!");
@@ -61,7 +63,7 @@ app.post('/login', (req, res) => {
 
 				userData.sessionToken = crypto.randomBytes(32).toString('hex');
 
-				Schema.User.findByIdAndUpdate(prod._id, { $set: { sessionToken: userData.sessionToken }},
+				Schema.findByIdAndUpdate(prod._id, { $set: { sessionToken: userData.sessionToken }},
 					(error) => {
 						if (error) {
 							console.error(err);
@@ -81,10 +83,11 @@ app.post('/login', (req, res) => {
 
 // Logout
 app.post('/logout', (req, res) => {
-	Schema.User.findByIdAndUpdate(req.body.userID, {$unset: { sessionToken: "" } },
+	Schema.findByIdAndUpdate(req.body.userID, {$unset: { sessionToken: "" } },
 		(err, prod) => {
 			if (err) {
 				console.error(err);
+				res.sendStatus(500);
 			} else {
 				console.log(`Deleted ${prod.n} sessions from ${req.body.userID}`);
 				if (prod.n === 1) {
@@ -100,9 +103,19 @@ app.post('/logout', (req, res) => {
 
 // Currency/Transaction
 // Get current wallet/balance
-app.get('/wallet', (req, res) => {
-	console.log(req.body);
-	res.send(req.body);
+app.post('/wallet', (req, res) => {
+	Schema.findById(req.body.userID, (err, prod) => {
+		if (err) {
+			console.error(err);
+			res.sendStatus(500);
+		} else {
+			let payload = {USD: prod.balance};
+			for (let i in prod.wallet) {
+				payload[prod.wallet[i].currency] = prod.wallet[i].amount;
+			}
+			res.send(payload);
+		}
+	});
 });
 // Create a new transaction
 app.post('/transaction', () => {
