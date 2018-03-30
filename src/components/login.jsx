@@ -19,7 +19,7 @@ export class Login extends React.Component {
 				}
 			}
 			let option = {
-				url: "http://localhost:8000/login",
+				url: "http://aws.domh.ca:8000/login",
 				json: formData
 			};
 			Request.post(option, (err, res, body) => {

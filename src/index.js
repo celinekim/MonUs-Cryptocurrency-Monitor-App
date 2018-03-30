@@ -36,7 +36,7 @@ class App extends React.Component {
 	logOut = () => {
 		this.setState({isLoggedIn: null});
 		Request.post({
-			url: "http://localhost:8000/logout",
+			url: "http://aws.domh.ca:8000/logout",
 			json: {
 				_id: localStorage.getItem('_id'),
 				sessionToken: localStorage.getItem('sessionToken')
