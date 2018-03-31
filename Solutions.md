@@ -1,13 +1,13 @@
 *Note: Final compiled static HTML is in build/ directory*  
 *Or on my personal website (if avaliable): [https://monus.domh.ca/](https://monus.domh.ca/)*
 
-The end user for our application is someone who has an interest in cryptocurrency. 
+The end user for our application is someone who has an interest in cryptocurrency. End users can use the application to view real-time graphs displaying data on cryptocurrencies such as Bitcoin, follow their favourite cryptocurrencies, and to buy and sell cryptocurrencies (known as "mock trading"). Users must create an account if they want to follow cryptocurrencies and perform mock trading. 
 
 Features of our web application:
 
-1. Login 
+1. Login/Logout 
 
-Existing users can log in to MonUs to continue viewing data on their favourite cryptocurrencies and mock trade with other users.
+Existing users can log in to MonUs using their username and password (ex: username: john_smith, password: john) to continue viewing data on their favourite cryptocurrencies and mock trade. Users can log out once they are finished.
 
 2. Sign up 
 
@@ -20,7 +20,6 @@ These graphs, updated every 30 seconds, display current and historical data for 
 4. Learn about the team
 
 Users can learn more about the team behind the application and check out their GitHub and LinkedIn profiles.  
-
 5. Cryptocurrencies
 
 The Cryptocurrencies page allows users to view graphs for all ten cryptocurrencies that MonUs monitors. 
