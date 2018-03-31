@@ -81,7 +81,7 @@ export class CurrencyView extends React.Component {
 						))}
 					</select>
 				</div>
-				<Summary priceData={this.state.priceData}/>
+				<Summary priceData={this.state.priceData} isLoggedIn={this.props.isLoggedIn}/>
 			</div>
 		)
 	}

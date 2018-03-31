@@ -38,8 +38,8 @@ class App extends React.Component {
 		Request.post({
 			url: "http://localhost:8000/logout",
 			json: {
-				userID: localStorage.getItem('_id'),
-				sessionToken: localStorage.getItem('token')
+				_id: localStorage.getItem('_id'),
+				sessionToken: localStorage.getItem('sessionToken')
 			}
 		}, (err, res, body) => {
 			if (err) {
@@ -84,9 +84,9 @@ class App extends React.Component {
 						<Switch>
 							<Route path="/" exact component={HomeView} />
 							<Route path="/team" exact component={TeamView} />
-							<Route path="/my-currency" exact component={CurrencyView} />
+							<Route path="/my-currency" exact render={()=><CurrencyView isLoggedIn={this.state.isLoggedIn}/>}/>
 							<Route render={() =>
-								<div id="team" className="row">
+								<div className="row">
 									<div className="content-container col s12">
 										<h2 className="text-title text-center">404 - Page not found</h2>
 									</div>

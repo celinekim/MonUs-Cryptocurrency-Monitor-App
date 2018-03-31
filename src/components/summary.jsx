@@ -2,30 +2,72 @@ import React from "react";
 import { toast } from 'materialize-css';
 
 import * as Currency from '../const/currency';
+import Request from "request";
 
 
 export class Summary extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			assets: JSON.parse(localStorage.getItem('assets')) || Currency.defaultUserAsset,
+			assets: {USD: 0},
 			currencies: ['BTC', 'ETH'],
 		};
 	}
 
-	transaction = (symbol, amount) => {
-		let assets = this.state.assets;
-		let USDAmount = assets.USD - this.props.priceData[symbol].USD * amount;
-		let symbolAmount = (assets[symbol] || 0) + amount;
-		if (USDAmount >= 0 && symbolAmount >= 0) {
-			assets.USD = USDAmount;
-			assets[symbol] = symbolAmount;
-			this.setState({assets: assets});
-			localStorage.setItem('assets', JSON.stringify(assets));
-			return true;
+	componentWillReceiveProps(nextProps) {
+		this.props = nextProps;
+		this.updateWallet();
+	}
+
+	updateWallet = () => {
+		if (localStorage.getItem('_id')) {
+			Request.post({
+				url: "http://localhost:8000/wallet",
+				json: {
+					_id: localStorage.getItem('_id'),
+					sessionToken: localStorage.getItem('sessionToken')
+				}
+			}, (err, res, body) => {
+				if (err) {
+					console.error(err);
+				} else {
+					if (res.statusCode === 200) {
+						this.setState({assets: body});
+					}
+				}
+			});
 		} else {
-			return false;
+			this.setState({assets: {USD: 0}});
 		}
+	};
+
+	transaction = (symbol, amount) => {
+		Request.post({
+			url: "http://localhost:8000/transaction",
+			json: {
+				credentials: {
+					_id: localStorage.getItem('_id'),
+					sessionToken: localStorage.getItem('sessionToken')
+				},
+				symbol: symbol,
+				amount: amount
+			}
+		}, (err, res, body) => {
+			if (err) {
+				console.error(err);
+			} else {
+				if (res.statusCode === 409) {
+					if (amount < 0) {
+						toast(`Not sufficient ${symbol}!`, 3000);
+					} else {
+						toast(`Not sufficient USD!`, 3000);
+					}
+				} else if (res.statusCode === 200) {
+					toast(`${amount < 0 ? 'Sold' : 'Bought'} ${body.amount} ${symbol}`, 3000);
+					this.setState({assets: body.wallet});
+				}
+			}
+		});
 	};
 
 	render() {
@@ -50,37 +92,26 @@ export class Summary extends React.Component {
 							<td>{(this.state.assets[symbol] || 0).toPrecision(7)}</td>
 							<td>{this.props.priceData ? (this.props.priceData[symbol].USD * (this.state.assets[symbol] || 0)).toPrecision(7) : 'N/A'}</td>
 							<td className="flex-row">
-								<input ref={symbol} type="number"/>
+								<input ref={symbol} type="number" defaultValue={0}/>
 								<button className="waves-effect waves-teal btn-flat" onClick={() => {
 									if (parseFloat(this.refs[symbol].value) > 0) {
-										if (this.transaction(symbol, parseFloat(this.refs[symbol].value))) {
-											toast(`Bought ${this.refs[symbol].value} ${symbol}`, 3000)
-										} else {
-											toast(`Not sufficient funds!`, 3000)
-										}
+										this.transaction(symbol, parseFloat(this.refs[symbol].value));
 									}
 								}}>Buy</button>
 								<button className="waves-effect waves-teal btn-flat"  onClick={() => {
 									if (parseFloat(this.refs[symbol].value) > 0) {
-										if (this.transaction(symbol, -parseFloat(this.refs[symbol].value))) {
-											toast(`Sold ${this.refs[symbol].value} ${symbol}`, 3000)
-										} else {
-											toast(`Not sufficient ${symbol}!`, 3000)
-										}
+										this.transaction(symbol, -parseFloat(this.refs[symbol].value));
 									}
 								}}>Sell</button>
 								<button className="waves-effect waves-teal btn-flat hide-on-small-only" onClick={() => {
-									let amount = this.state.assets.USD / this.props.priceData[symbol].USD;
-									if (amount > 0) {
-										this.transaction(symbol, amount);
-										toast(`Bought ${amount} ${symbol}`, 3000)
+									if (this.state.assets.USD > 0) {
+										this.transaction(symbol, 'MAX');
 									}
 								}}>Buy All</button>
 								<button className="waves-effect waves-teal btn-flat hide-on-small-only" onClick={() => {
 									let amount = this.state.assets[symbol];
 									if (amount > 0) {
 										this.transaction(symbol, -amount);
-										toast(`Sold ${amount} ${symbol}`, 3000)
 									}
 								}}>Sell All</button>
 							</td>
