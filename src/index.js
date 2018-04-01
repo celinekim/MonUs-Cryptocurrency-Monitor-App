@@ -34,7 +34,7 @@ class App extends React.Component {
 		const sessionToken = localStorage.getItem("sessionToken");
 		if (_id && sessionToken) {
 			Request.get(
-				`http://localhost:8000/user/${_id}/${sessionToken}`,
+				`http://aws.domh.ca:8000/user/${_id}/${sessionToken}`,
 				(err, res, body) => {
 					if (err) {
 						console.error(err);
@@ -62,7 +62,7 @@ class App extends React.Component {
 		this.setState({ isLoggedIn: null });
 		Request.post(
 			{
-				url: "http://localhost:8000/logout",
+				url: "http://aws.domh.ca:8000/logout",
 				json: {
 					_id: localStorage.getItem("_id"),
 					sessionToken: localStorage.getItem("sessionToken")

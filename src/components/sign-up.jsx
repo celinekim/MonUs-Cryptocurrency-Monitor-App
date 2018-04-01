@@ -34,7 +34,7 @@ export class SignUp extends React.Component {
 			const formData = { username, password, firstName, lastName, email };
 
 			let option = {
-				url: "http://localhost:8000/signup",
+				url: "http://aws.domh.ca:8000/signup",
 				json: formData
 			};
 			Request.post(option, (err, res, body) => {

@@ -25,7 +25,7 @@ export class Login extends React.Component {
 		if (username && username.length > 0 && password && password.length > 0) {
 			const formData = { username, password };
 			let option = {
-				url: "http://localhost:8000/login",
+				url: "http://aws.domh.ca:8000/login",
 				json: formData
 			};
 			Request.post(option, (err, res, body) => {
