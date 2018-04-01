@@ -20,7 +20,6 @@ export class Login extends React.Component {
 	};
 
 	onSubmit = () => {
-		const { logIn } = this.props;
 		const { username, password } = this.state;
 		if (username && username.length > 0 && password && password.length > 0) {
 			const formData = { username, password };
@@ -99,7 +98,6 @@ export class Login extends React.Component {
 						<button
 							type="submit"
 							className="waves-effect modal-action btn-flat"
-							type="button"
 							onClick={this.onSubmit}
 							disabled={!isEnable}
 						>

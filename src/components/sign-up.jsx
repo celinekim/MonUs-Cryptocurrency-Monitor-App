@@ -21,7 +21,6 @@ export class SignUp extends React.Component {
 	};
 
 	submit = () => {
-		const { logIn } = this.props;
 		const { username, password, firstName, lastName, email } = this.state;
 		const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		if (
