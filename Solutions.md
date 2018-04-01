@@ -1,13 +1,13 @@
 *Note: Final compiled static HTML is in build/ directory*  
 *Or on my personal website (if avaliable): [https://monus.domh.ca/](https://monus.domh.ca/)*
 
-The end user for our application is someone who has an interest in cryptocurrency. End users can use the application to view real-time graphs displaying data on cryptocurrencies such as Bitcoin, follow their favourite cryptocurrencies, and to buy and sell cryptocurrencies (known as "mock trading"). Users must create an account if they want to follow cryptocurrencies and perform mock trading. 
+The end user for our application is someone who has an interest in cryptocurrency. End users can use the application to view real-time graphs displaying data on cryptocurrencies such as Bitcoin and to buy and sell cryptocurrencies (known as "mock trading"). Users must create an account if they want to perform mock trading. 
 
 Features of our web application:
 
 1. Login/Logout 
 
-Existing users can log in to MonUs using their username and password (example credentials -- username: john_smith, password: john) to continue viewing data on their favourite cryptocurrencies and mock trade. Users can log out once they are finished.
+Existing users can log in to MonUs using their username and password (example credentials -- username: john_smith, password: john) to continue viewing data on their favourite cryptocurrencies and mock trade. Users remain logged in when they open a new tab or window. Users can log out once they are finished.
 
 2. Sign up 
 
@@ -22,7 +22,7 @@ These graphs, updated every 30 seconds, display current and historical data for 
 Users can learn more about the team behind the application and check out their GitHub and LinkedIn profiles.  
 5. My Cryptocurrencies
 
-The "My Cryptocurrencies" page allows users to view graphs for all ten cryptocurrencies that MonUs monitors. Users must be logged in to view it. If users try to access this page when not logged in, they will be redirected to the home page. 
+The "My Cryptocurrencies" page can only be viewed if users are logged in. This is where users can perform mock trading and view a real-time graph comparing the prices of any two cryptocurrencies. 
 
 6. View history from a certain point of time
 
