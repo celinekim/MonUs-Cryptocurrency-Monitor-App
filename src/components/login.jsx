@@ -96,8 +96,8 @@ export class Login extends React.Component {
 							Cancel
 						</button>
 						<button
-							type="submit"
 							className="waves-effect modal-action btn-flat"
+							type="button"
 							onClick={this.onSubmit}
 							disabled={!isEnable}
 						>
