@@ -20,12 +20,11 @@ export class Login extends React.Component {
 	};
 
 	onSubmit = () => {
-		const { logIn } = this.props;
 		const { username, password } = this.state;
 		if (username && username.length > 0 && password && password.length > 0) {
 			const formData = { username, password };
 			let option = {
-				url: "http://localhost:8000/login",
+				url: "http://aws.domh.ca:8000/login",
 				json: formData
 			};
 			Request.post(option, (err, res, body) => {
@@ -97,7 +96,6 @@ export class Login extends React.Component {
 							Cancel
 						</button>
 						<button
-							type="submit"
 							className="waves-effect modal-action btn-flat"
 							type="button"
 							onClick={this.onSubmit}

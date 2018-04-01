@@ -32,7 +32,7 @@ let userSchema = new Schema({
 });
 
 
-mongoose.connect('mongodb://domh.ca/monus', (error) => {
+mongoose.connect('mongodb://localhost/monus', (error) => {
 	if (error) {
 		console.log(error);
 	} else {

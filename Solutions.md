@@ -1,5 +1,4 @@
-*Note: Final compiled static HTML is in build/ directory*  
-*Or on my personal website (if avaliable): [https://monus.domh.ca/](https://monus.domh.ca/)*
+*It's hosted on my personal website: [http://aws.domh.ca/](http://aws.domh.ca/)*
 
 The end user for our application is someone who has an interest in cryptocurrency. End users can use the application to view real-time graphs displaying data on cryptocurrencies such as Bitcoin and to buy and sell cryptocurrencies (known as "mock trading"). Users must create an account if they want to perform mock trading. 
 

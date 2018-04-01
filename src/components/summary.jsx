@@ -35,7 +35,7 @@ export class Summary extends React.Component {
 		if (localStorage.getItem("_id")) {
 			Request.post(
 				{
-					url: "http://localhost:8000/wallet",
+					url: "http://aws.domh.ca:8000/wallet",
 					json: {
 						_id: localStorage.getItem("_id"),
 						sessionToken: localStorage.getItem("sessionToken")
@@ -59,7 +59,7 @@ export class Summary extends React.Component {
 	transaction = (symbol, amount) => {
 		Request.post(
 			{
-				url: "http://localhost:8000/transaction",
+				url: "http://aws.domh.ca:8000/transaction",
 				json: {
 					credentials: {
 						_id: localStorage.getItem("_id"),
