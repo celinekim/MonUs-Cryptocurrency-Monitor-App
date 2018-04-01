@@ -7,7 +7,7 @@ Features of our web application:
 
 1. Login/Logout 
 
-Existing users can log in to MonUs using their username and password (ex: username: john_smith, password: john) to continue viewing data on their favourite cryptocurrencies and mock trade. Users can log out once they are finished.
+Existing users can log in to MonUs using their username and password (example credentials -- username: john_smith, password: john) to continue viewing data on their favourite cryptocurrencies and mock trade. Users can log out once they are finished.
 
 2. Sign up 
 
@@ -20,9 +20,9 @@ These graphs, updated every 30 seconds, display current and historical data for 
 4. Learn about the team
 
 Users can learn more about the team behind the application and check out their GitHub and LinkedIn profiles.  
-5. Cryptocurrencies
+5. My Cryptocurrencies
 
-The Cryptocurrencies page allows users to view graphs for all ten cryptocurrencies that MonUs monitors. 
+The "My Cryptocurrencies" page allows users to view graphs for all ten cryptocurrencies that MonUs monitors. Users must be logged in to view it. If users try to access this page when not logged in, they will be redirected to the home page. 
 
 6. View history from a certain point of time
 
